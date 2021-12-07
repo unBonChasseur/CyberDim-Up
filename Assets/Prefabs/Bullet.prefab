@@ -109,5 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e75c9629531b6f1448651a7ff8cbd156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_movementSpeed: 10
+  m_movementSpeed: 15
   m_mainCamera: {fileID: 5272203866134600942, guid: 5332316ab618ff7488eb4f3bbe1fd4ed, type: 3}
+  m_deathDist: 450
