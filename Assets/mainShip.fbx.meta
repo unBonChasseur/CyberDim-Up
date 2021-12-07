@@ -1,0 +1,777 @@
+fileFormatVersion: 2
+guid: 3f1b5263b22d0e54c8323096f66f0617
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: -3853835222740001847
+    second: engine_cntrls|engine_cntrls|Take 001|BaseLayer
+  - first:
+      74: 6382520549850705951
+    second: engine_cntrls|Engine_cylinder|Take 001|BaseLayer
+  - first:
+      74: -3622209625846602968
+    second: engine_cntrls|group6|Take 001|BaseLayer
+  - first:
+      74: -8462904333853610257
+    second: engine_cntrls|group7|Take 001|BaseLayer
+  - first:
+      74: -8856831354670314748
+    second: engine_cntrls|Left_misselturrent|Take 001|BaseLayer
+  - first:
+      74: -1349193441945001549
+    second: engine_cntrls|Left_turrent_structure|Take 001|BaseLayer
+  - first:
+      74: 889804802521614659
+    second: engine_cntrls|Left_turrent|Take 001|BaseLayer
+  - first:
+      74: 5574461419195792678
+    second: engine_cntrls|missel1|Take 001|BaseLayer
+  - first:
+      74: 2198185652679289304
+    second: engine_cntrls|Missels_suport|Take 001|BaseLayer
+  - first:
+      74: 6639155148317947530
+    second: engine_cntrls|motores|Take 001|BaseLayer
+  - first:
+      74: -1186318788333609663
+    second: engine_cntrls|Right_misselturrent_structure|Take 001|BaseLayer
+  - first:
+      74: -2841537161144594713
+    second: engine_cntrls|Right_misselturrent_suport|Take 001|BaseLayer
+  - first:
+      74: 992368415818226085
+    second: engine_cntrls|Right_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 2815797829475434679
+    second: engine_cntrls|Right_turrent_door|Take 001|BaseLayer
+  - first:
+      74: -6172088453476814265
+    second: engine_cntrls|Right_turrent_suport|Take 001|BaseLayer
+  - first:
+      74: -6331100535612773438
+    second: group6|engine_cntrls|Take 001|BaseLayer
+  - first:
+      74: -4849917618956814205
+    second: group6|Engine_cylinder|Take 001|BaseLayer
+  - first:
+      74: -519906458046711751
+    second: group6|group6|Take 001|BaseLayer
+  - first:
+      74: -6886418573638786266
+    second: group6|group7|Take 001|BaseLayer
+  - first:
+      74: 5543323060083834103
+    second: group6|Left_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 870962058781828309
+    second: group6|Left_turrent_structure|Take 001|BaseLayer
+  - first:
+      74: 589891198865904395
+    second: group6|Left_turrent|Take 001|BaseLayer
+  - first:
+      74: -389958278515789270
+    second: group6|missel1|Take 001|BaseLayer
+  - first:
+      74: 7641697038099748151
+    second: group6|Missels_suport|Take 001|BaseLayer
+  - first:
+      74: 6490946440378133107
+    second: group6|motores|Take 001|BaseLayer
+  - first:
+      74: -5842966666772306179
+    second: group6|Right_misselturrent_structure|Take 001|BaseLayer
+  - first:
+      74: -582408330407699703
+    second: group6|Right_misselturrent_suport|Take 001|BaseLayer
+  - first:
+      74: 4038037975393198346
+    second: group6|Right_misselturrent|Take 001|BaseLayer
+  - first:
+      74: -5674712705694340310
+    second: group6|Right_turrent_door|Take 001|BaseLayer
+  - first:
+      74: 2510336341487290081
+    second: group6|Right_turrent_suport|Take 001|BaseLayer
+  - first:
+      74: 2520364303377180465
+    second: group7|engine_cntrls|Take 001|BaseLayer
+  - first:
+      74: 8259790200640886804
+    second: group7|Engine_cylinder|Take 001|BaseLayer
+  - first:
+      74: 2436141703806676770
+    second: group7|group6|Take 001|BaseLayer
+  - first:
+      74: 6358823238732639766
+    second: group7|group7|Take 001|BaseLayer
+  - first:
+      74: -5880439543256821720
+    second: group7|Left_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 4534561462969308015
+    second: group7|Left_turrent_structure|Take 001|BaseLayer
+  - first:
+      74: 7500097082310045188
+    second: group7|Left_turrent|Take 001|BaseLayer
+  - first:
+      74: 6202079196213655836
+    second: group7|missel1|Take 001|BaseLayer
+  - first:
+      74: 6251947628313064554
+    second: group7|Missels_suport|Take 001|BaseLayer
+  - first:
+      74: -1918187036826613054
+    second: group7|motores|Take 001|BaseLayer
+  - first:
+      74: 6880631765434245275
+    second: group7|Right_misselturrent_structure|Take 001|BaseLayer
+  - first:
+      74: -5992228840498774114
+    second: group7|Right_misselturrent_suport|Take 001|BaseLayer
+  - first:
+      74: -5057581282601578155
+    second: group7|Right_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 2462893844968229048
+    second: group7|Right_turrent_door|Take 001|BaseLayer
+  - first:
+      74: -3428048500427892103
+    second: group7|Right_turrent_suport|Take 001|BaseLayer
+  - first:
+      74: 3182953205862072586
+    second: Left_misselturrent|engine_cntrls|Take 001|BaseLayer
+  - first:
+      74: 141615530211282618
+    second: Left_misselturrent|Engine_cylinder|Take 001|BaseLayer
+  - first:
+      74: -7686219865812571450
+    second: Left_misselturrent|group6|Take 001|BaseLayer
+  - first:
+      74: -3645859666064468081
+    second: Left_misselturrent|group7|Take 001|BaseLayer
+  - first:
+      74: -6477287887667586827
+    second: Left_misselturrent|Left_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 2852019290389430810
+    second: Left_misselturrent|Left_turrent_structure|Take 001|BaseLayer
+  - first:
+      74: -7244627674992285445
+    second: Left_misselturrent|Left_turrent|Take 001|BaseLayer
+  - first:
+      74: -7633230754585036427
+    second: Left_misselturrent|missel1|Take 001|BaseLayer
+  - first:
+      74: 5971262716115989376
+    second: Left_misselturrent|Missels_suport|Take 001|BaseLayer
+  - first:
+      74: 4679466290826014341
+    second: Left_misselturrent|motores|Take 001|BaseLayer
+  - first:
+      74: -389572267411145339
+    second: Left_misselturrent|Right_misselturrent_structure|Take 001|BaseLayer
+  - first:
+      74: -8236455038199949896
+    second: Left_misselturrent|Right_misselturrent_suport|Take 001|BaseLayer
+  - first:
+      74: 2940811395210866783
+    second: Left_misselturrent|Right_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 4946913000240544282
+    second: Left_misselturrent|Right_turrent_door|Take 001|BaseLayer
+  - first:
+      74: -2497990103954800239
+    second: Left_misselturrent|Right_turrent_suport|Take 001|BaseLayer
+  - first:
+      74: -146127057022076344
+    second: Left_turrent_structure|engine_cntrls|Take 001|BaseLayer
+  - first:
+      74: -3226712881762629863
+    second: Left_turrent_structure|Engine_cylinder|Take 001|BaseLayer
+  - first:
+      74: -5543017488032096084
+    second: Left_turrent_structure|group6|Take 001|BaseLayer
+  - first:
+      74: 7278775266925528786
+    second: Left_turrent_structure|group7|Take 001|BaseLayer
+  - first:
+      74: 8239011838998905753
+    second: Left_turrent_structure|Left_misselturrent|Take 001|BaseLayer
+  - first:
+      74: -2072157790666227792
+    second: Left_turrent_structure|Left_turrent_structure|Take 001|BaseLayer
+  - first:
+      74: -8095514944998301039
+    second: Left_turrent_structure|Left_turrent|Take 001|BaseLayer
+  - first:
+      74: 8896729529863838820
+    second: Left_turrent_structure|missel1|Take 001|BaseLayer
+  - first:
+      74: -8099235142138875126
+    second: Left_turrent_structure|Missels_suport|Take 001|BaseLayer
+  - first:
+      74: 3248779603134630895
+    second: Left_turrent_structure|motores|Take 001|BaseLayer
+  - first:
+      74: 5669619863250737707
+    second: Left_turrent_structure|Right_misselturrent_structure|Take 001|BaseLayer
+  - first:
+      74: -6909405827837836943
+    second: Left_turrent_structure|Right_misselturrent_suport|Take 001|BaseLayer
+  - first:
+      74: -2104774707221478887
+    second: Left_turrent_structure|Right_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 4006276373984506182
+    second: Left_turrent_structure|Right_turrent_door|Take 001|BaseLayer
+  - first:
+      74: 1471914229909622969
+    second: Left_turrent_structure|Right_turrent_suport|Take 001|BaseLayer
+  - first:
+      74: -619229721643596574
+    second: Right_misselturrent_structure|engine_cntrls|Take 001|BaseLayer
+  - first:
+      74: -310814852397913200
+    second: Right_misselturrent_structure|Engine_cylinder|Take 001|BaseLayer
+  - first:
+      74: -5342097036155174117
+    second: Right_misselturrent_structure|group6|Take 001|BaseLayer
+  - first:
+      74: 945843083161936490
+    second: Right_misselturrent_structure|group7|Take 001|BaseLayer
+  - first:
+      74: 8793589092679370314
+    second: Right_misselturrent_structure|Left_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 3826179467443887794
+    second: Right_misselturrent_structure|Left_turrent_structure|Take 001|BaseLayer
+  - first:
+      74: -8480429681033953252
+    second: Right_misselturrent_structure|Left_turrent|Take 001|BaseLayer
+  - first:
+      74: 8691212401120067672
+    second: Right_misselturrent_structure|missel1|Take 001|BaseLayer
+  - first:
+      74: 7487523789387737224
+    second: Right_misselturrent_structure|Missels_suport|Take 001|BaseLayer
+  - first:
+      74: 8576525266004996298
+    second: Right_misselturrent_structure|motores|Take 001|BaseLayer
+  - first:
+      74: -433366480450973561
+    second: Right_misselturrent_structure|Right_misselturrent_structure|Take 001|BaseLayer
+  - first:
+      74: -2218910894369489132
+    second: Right_misselturrent_structure|Right_misselturrent_suport|Take 001|BaseLayer
+  - first:
+      74: -6326891389110788081
+    second: Right_misselturrent_structure|Right_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 4221758981061557312
+    second: Right_misselturrent_structure|Right_turrent_door|Take 001|BaseLayer
+  - first:
+      74: 8519457705358318413
+    second: Right_misselturrent_structure|Right_turrent_suport|Take 001|BaseLayer
+  - first:
+      74: 7992690647099791836
+    second: Left_turrent|engine_cntrls|Take 001|BaseLayer
+  - first:
+      74: -5659437990920841360
+    second: Left_turrent|Engine_cylinder|Take 001|BaseLayer
+  - first:
+      74: 2266095333023546748
+    second: Left_turrent|group6|Take 001|BaseLayer
+  - first:
+      74: 6640850130814958093
+    second: Left_turrent|group7|Take 001|BaseLayer
+  - first:
+      74: -548796203489269708
+    second: Left_turrent|Left_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 8704086190187011730
+    second: Left_turrent|Left_turrent_structure|Take 001|BaseLayer
+  - first:
+      74: 4183385202029400315
+    second: Left_turrent|Left_turrent|Take 001|BaseLayer
+  - first:
+      74: 8667812397533784004
+    second: Left_turrent|missel1|Take 001|BaseLayer
+  - first:
+      74: -5217538903283156446
+    second: Left_turrent|Missels_suport|Take 001|BaseLayer
+  - first:
+      74: 2842809840260039166
+    second: Left_turrent|motores|Take 001|BaseLayer
+  - first:
+      74: 6094467618094990110
+    second: Left_turrent|Right_misselturrent_structure|Take 001|BaseLayer
+  - first:
+      74: -6850552728246706214
+    second: Left_turrent|Right_misselturrent_suport|Take 001|BaseLayer
+  - first:
+      74: 3291634377482862851
+    second: Left_turrent|Right_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 2542807742080854488
+    second: Left_turrent|Right_turrent_door|Take 001|BaseLayer
+  - first:
+      74: 6724078138543213034
+    second: Left_turrent|Right_turrent_suport|Take 001|BaseLayer
+  - first:
+      74: -6711265712166249648
+    second: Right_turrent_suport|engine_cntrls|Take 001|BaseLayer
+  - first:
+      74: -5688965862718951574
+    second: Right_turrent_suport|Engine_cylinder|Take 001|BaseLayer
+  - first:
+      74: 6620515282212133800
+    second: Right_turrent_suport|group6|Take 001|BaseLayer
+  - first:
+      74: -2458966279169261158
+    second: Right_turrent_suport|group7|Take 001|BaseLayer
+  - first:
+      74: -5550265430297483238
+    second: Right_turrent_suport|Left_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 2696334525934620090
+    second: Right_turrent_suport|Left_turrent_structure|Take 001|BaseLayer
+  - first:
+      74: 7608111787698596526
+    second: Right_turrent_suport|Left_turrent|Take 001|BaseLayer
+  - first:
+      74: 7465642069945932625
+    second: Right_turrent_suport|missel1|Take 001|BaseLayer
+  - first:
+      74: 5402771525415563612
+    second: Right_turrent_suport|Missels_suport|Take 001|BaseLayer
+  - first:
+      74: -1840648537654958341
+    second: Right_turrent_suport|motores|Take 001|BaseLayer
+  - first:
+      74: 5505310076739710173
+    second: Right_turrent_suport|Right_misselturrent_structure|Take 001|BaseLayer
+  - first:
+      74: -6266527059769130398
+    second: Right_turrent_suport|Right_misselturrent_suport|Take 001|BaseLayer
+  - first:
+      74: -3181993069195896736
+    second: Right_turrent_suport|Right_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 8128230249318548613
+    second: Right_turrent_suport|Right_turrent_door|Take 001|BaseLayer
+  - first:
+      74: 7123585394867372121
+    second: Right_turrent_suport|Right_turrent_suport|Take 001|BaseLayer
+  - first:
+      74: -7066426989173924553
+    second: Right_misselturrent_suport|engine_cntrls|Take 001|BaseLayer
+  - first:
+      74: -8073388724626660328
+    second: Right_misselturrent_suport|Engine_cylinder|Take 001|BaseLayer
+  - first:
+      74: -7806251169014845154
+    second: Right_misselturrent_suport|group6|Take 001|BaseLayer
+  - first:
+      74: -8790287828394176039
+    second: Right_misselturrent_suport|group7|Take 001|BaseLayer
+  - first:
+      74: -6725915722975756481
+    second: Right_misselturrent_suport|Left_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 7795549682463346421
+    second: Right_misselturrent_suport|Left_turrent_structure|Take 001|BaseLayer
+  - first:
+      74: 5404194251758751221
+    second: Right_misselturrent_suport|Left_turrent|Take 001|BaseLayer
+  - first:
+      74: 4467912585050190314
+    second: Right_misselturrent_suport|missel1|Take 001|BaseLayer
+  - first:
+      74: -837343747303303926
+    second: Right_misselturrent_suport|Missels_suport|Take 001|BaseLayer
+  - first:
+      74: 6630926115187593512
+    second: Right_misselturrent_suport|motores|Take 001|BaseLayer
+  - first:
+      74: 593680509363320679
+    second: Right_misselturrent_suport|Right_misselturrent_structure|Take 001|BaseLayer
+  - first:
+      74: 8478105420370027438
+    second: Right_misselturrent_suport|Right_misselturrent_suport|Take 001|BaseLayer
+  - first:
+      74: -2968897005142408689
+    second: Right_misselturrent_suport|Right_misselturrent|Take 001|BaseLayer
+  - first:
+      74: -1843565744009519663
+    second: Right_misselturrent_suport|Right_turrent_door|Take 001|BaseLayer
+  - first:
+      74: -6521710355509843360
+    second: Right_misselturrent_suport|Right_turrent_suport|Take 001|BaseLayer
+  - first:
+      74: 3967978552847488296
+    second: missel1|engine_cntrls|Take 001|BaseLayer
+  - first:
+      74: -7752887068055654435
+    second: missel1|Engine_cylinder|Take 001|BaseLayer
+  - first:
+      74: -2238318546842913948
+    second: missel1|group6|Take 001|BaseLayer
+  - first:
+      74: -5492345809476897154
+    second: missel1|group7|Take 001|BaseLayer
+  - first:
+      74: -8864178078127194752
+    second: missel1|Left_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 3223000682508200479
+    second: missel1|Left_turrent_structure|Take 001|BaseLayer
+  - first:
+      74: -124207626997220087
+    second: missel1|Left_turrent|Take 001|BaseLayer
+  - first:
+      74: 5913718030578162799
+    second: missel1|missel1|Take 001|BaseLayer
+  - first:
+      74: 6890020928683495985
+    second: missel1|Missels_suport|Take 001|BaseLayer
+  - first:
+      74: 4223810039034201132
+    second: missel1|motores|Take 001|BaseLayer
+  - first:
+      74: -7619060411270279836
+    second: missel1|Right_misselturrent_structure|Take 001|BaseLayer
+  - first:
+      74: -3369790288373173112
+    second: missel1|Right_misselturrent_suport|Take 001|BaseLayer
+  - first:
+      74: -9073006081154057461
+    second: missel1|Right_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 7707755411974581143
+    second: missel1|Right_turrent_door|Take 001|BaseLayer
+  - first:
+      74: -323721587854623648
+    second: missel1|Right_turrent_suport|Take 001|BaseLayer
+  - first:
+      74: 937314878508060608
+    second: Right_misselturrent|engine_cntrls|Take 001|BaseLayer
+  - first:
+      74: -1953712545738264542
+    second: Right_misselturrent|Engine_cylinder|Take 001|BaseLayer
+  - first:
+      74: -5800874987725235655
+    second: Right_misselturrent|group6|Take 001|BaseLayer
+  - first:
+      74: -7752143859653156368
+    second: Right_misselturrent|group7|Take 001|BaseLayer
+  - first:
+      74: 2760458638897899750
+    second: Right_misselturrent|Left_misselturrent|Take 001|BaseLayer
+  - first:
+      74: -814912507020657369
+    second: Right_misselturrent|Left_turrent_structure|Take 001|BaseLayer
+  - first:
+      74: -7602838637266180554
+    second: Right_misselturrent|Left_turrent|Take 001|BaseLayer
+  - first:
+      74: 8448273975549062250
+    second: Right_misselturrent|missel1|Take 001|BaseLayer
+  - first:
+      74: -9205400914776338300
+    second: Right_misselturrent|Missels_suport|Take 001|BaseLayer
+  - first:
+      74: 7217945461005857319
+    second: Right_misselturrent|motores|Take 001|BaseLayer
+  - first:
+      74: -9063643191579163806
+    second: Right_misselturrent|Right_misselturrent_structure|Take 001|BaseLayer
+  - first:
+      74: 6100454420621820102
+    second: Right_misselturrent|Right_misselturrent_suport|Take 001|BaseLayer
+  - first:
+      74: -7982867324619186081
+    second: Right_misselturrent|Right_misselturrent|Take 001|BaseLayer
+  - first:
+      74: -8823355925857191196
+    second: Right_misselturrent|Right_turrent_door|Take 001|BaseLayer
+  - first:
+      74: 1459445236752456601
+    second: Right_misselturrent|Right_turrent_suport|Take 001|BaseLayer
+  - first:
+      74: 7827446123188006774
+    second: Right_turrent_door|engine_cntrls|Take 001|BaseLayer
+  - first:
+      74: 5619088932329511424
+    second: Right_turrent_door|Engine_cylinder|Take 001|BaseLayer
+  - first:
+      74: 656254196587400604
+    second: Right_turrent_door|group6|Take 001|BaseLayer
+  - first:
+      74: -8175160498587607084
+    second: Right_turrent_door|group7|Take 001|BaseLayer
+  - first:
+      74: -101034851903234724
+    second: Right_turrent_door|Left_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 7963552765437130743
+    second: Right_turrent_door|Left_turrent_structure|Take 001|BaseLayer
+  - first:
+      74: 4405162091009779595
+    second: Right_turrent_door|Left_turrent|Take 001|BaseLayer
+  - first:
+      74: 1280818451051230799
+    second: Right_turrent_door|missel1|Take 001|BaseLayer
+  - first:
+      74: -8211716103546679096
+    second: Right_turrent_door|Missels_suport|Take 001|BaseLayer
+  - first:
+      74: 1548803857826320676
+    second: Right_turrent_door|motores|Take 001|BaseLayer
+  - first:
+      74: -3340236495864046055
+    second: Right_turrent_door|Right_misselturrent_structure|Take 001|BaseLayer
+  - first:
+      74: 1557416410851327374
+    second: Right_turrent_door|Right_misselturrent_suport|Take 001|BaseLayer
+  - first:
+      74: -4934991824439119044
+    second: Right_turrent_door|Right_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 5532034045749901067
+    second: Right_turrent_door|Right_turrent_door|Take 001|BaseLayer
+  - first:
+      74: -55182962042168730
+    second: Right_turrent_door|Right_turrent_suport|Take 001|BaseLayer
+  - first:
+      74: 1790797580101893888
+    second: Missels_suport|engine_cntrls|Take 001|BaseLayer
+  - first:
+      74: 5050531347075160105
+    second: Missels_suport|Engine_cylinder|Take 001|BaseLayer
+  - first:
+      74: 4900293644776543340
+    second: Missels_suport|group6|Take 001|BaseLayer
+  - first:
+      74: 5441330693399716983
+    second: Missels_suport|group7|Take 001|BaseLayer
+  - first:
+      74: 7195787665303166843
+    second: Missels_suport|Left_misselturrent|Take 001|BaseLayer
+  - first:
+      74: -7931196514781255021
+    second: Missels_suport|Left_turrent_structure|Take 001|BaseLayer
+  - first:
+      74: 7196965013227355682
+    second: Missels_suport|Left_turrent|Take 001|BaseLayer
+  - first:
+      74: -4292389220822928065
+    second: Missels_suport|missel1|Take 001|BaseLayer
+  - first:
+      74: -2398458584401062383
+    second: Missels_suport|Missels_suport|Take 001|BaseLayer
+  - first:
+      74: 4386814581737651046
+    second: Missels_suport|motores|Take 001|BaseLayer
+  - first:
+      74: 2052265204149864113
+    second: Missels_suport|Right_misselturrent_structure|Take 001|BaseLayer
+  - first:
+      74: -4576417690834567468
+    second: Missels_suport|Right_misselturrent_suport|Take 001|BaseLayer
+  - first:
+      74: 3702432478379330014
+    second: Missels_suport|Right_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 5765571955769061989
+    second: Missels_suport|Right_turrent_door|Take 001|BaseLayer
+  - first:
+      74: -8017498980626199714
+    second: Missels_suport|Right_turrent_suport|Take 001|BaseLayer
+  - first:
+      74: -7005933846362736536
+    second: motores|engine_cntrls|Take 001|BaseLayer
+  - first:
+      74: -395099089195955681
+    second: motores|Engine_cylinder|Take 001|BaseLayer
+  - first:
+      74: -1298416278356250946
+    second: motores|group6|Take 001|BaseLayer
+  - first:
+      74: -8149271753490517215
+    second: motores|group7|Take 001|BaseLayer
+  - first:
+      74: -2601751313524468498
+    second: motores|Left_misselturrent|Take 001|BaseLayer
+  - first:
+      74: -822597119610995834
+    second: motores|Left_turrent_structure|Take 001|BaseLayer
+  - first:
+      74: -4071342401325454334
+    second: motores|Left_turrent|Take 001|BaseLayer
+  - first:
+      74: 3409172069922368463
+    second: motores|missel1|Take 001|BaseLayer
+  - first:
+      74: -6736057023500353037
+    second: motores|Missels_suport|Take 001|BaseLayer
+  - first:
+      74: -5425344148891573275
+    second: motores|motores|Take 001|BaseLayer
+  - first:
+      74: -8440977696227814360
+    second: motores|Right_misselturrent_structure|Take 001|BaseLayer
+  - first:
+      74: -4416107487407498698
+    second: motores|Right_misselturrent_suport|Take 001|BaseLayer
+  - first:
+      74: 5368329050276807394
+    second: motores|Right_misselturrent|Take 001|BaseLayer
+  - first:
+      74: -9018950400043369013
+    second: motores|Right_turrent_door|Take 001|BaseLayer
+  - first:
+      74: 136331639534189047
+    second: motores|Right_turrent_suport|Take 001|BaseLayer
+  - first:
+      74: 656168009881566889
+    second: Engine_cylinder|engine_cntrls|Take 001|BaseLayer
+  - first:
+      74: 7912781297864095272
+    second: Engine_cylinder|Engine_cylinder|Take 001|BaseLayer
+  - first:
+      74: -8243245990125183941
+    second: Engine_cylinder|group6|Take 001|BaseLayer
+  - first:
+      74: 2372128794739886659
+    second: Engine_cylinder|group7|Take 001|BaseLayer
+  - first:
+      74: 5432420650580082014
+    second: Engine_cylinder|Left_misselturrent|Take 001|BaseLayer
+  - first:
+      74: 924584095083975140
+    second: Engine_cylinder|Left_turrent_structure|Take 001|BaseLayer
+  - first:
+      74: 1627867160059833544
+    second: Engine_cylinder|Left_turrent|Take 001|BaseLayer
+  - first:
+      74: -728207028505225003
+    second: Engine_cylinder|missel1|Take 001|BaseLayer
+  - first:
+      74: 463340447608890709
+    second: Engine_cylinder|Missels_suport|Take 001|BaseLayer
+  - first:
+      74: 1880984058350596358
+    second: Engine_cylinder|motores|Take 001|BaseLayer
+  - first:
+      74: 1144558960706892163
+    second: Engine_cylinder|Right_misselturrent_structure|Take 001|BaseLayer
+  - first:
+      74: -4694658321245108025
+    second: Engine_cylinder|Right_misselturrent_suport|Take 001|BaseLayer
+  - first:
+      74: -4583359410992911552
+    second: Engine_cylinder|Right_misselturrent|Take 001|BaseLayer
+  - first:
+      74: -2614417014762480620
+    second: Engine_cylinder|Right_turrent_door|Take 001|BaseLayer
+  - first:
+      74: 3070331733690574330
+    second: Engine_cylinder|Right_turrent_suport|Take 001|BaseLayer
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
