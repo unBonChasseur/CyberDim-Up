@@ -18,13 +18,13 @@ public class Player : MonoBehaviour
 
     [Header("Bullet")]
     [SerializeField]
-    private float m_fireRate;
+    private float m_fireRateDelay;
     [SerializeField]
     private GameObject m_PrefabFire;
 
     private Stopwatch m_StopWatch;
 
-    private void Awake()
+    void Awake()
     {
         m_StopWatch = new Stopwatch();
         m_StopWatch.Start();
@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
 
                 if (Input.GetKey(KeyCode.Space))
                 {
-                    if(m_StopWatch.ElapsedMilliseconds >= m_fireRate)
+                    if(m_StopWatch.ElapsedMilliseconds >= m_fireRateDelay)
                     {
                         GameObject Fire = Instantiate(m_PrefabFire, transform.position, transform.rotation);
                         m_StopWatch.Restart();
@@ -76,7 +76,26 @@ public class Player : MonoBehaviour
             }
             else
             {
+                if (Input.GetKey(KeyCode.RightArrow) && m_currentPosition.x < m_initialPosition.x * 2)
+                    transform.position += new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
 
+                if (Input.GetKey(KeyCode.LeftArrow) && m_currentPosition.x > 0)
+                    transform.position -= new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
+
+                if (Input.GetKey(KeyCode.UpArrow) && m_currentPosition.y < m_initialPosition.y * 2)
+                    transform.position += new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
+
+                if (Input.GetKey(KeyCode.DownArrow) && m_currentPosition.y > 0)
+                    transform.position -= new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
+
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    if (m_StopWatch.ElapsedMilliseconds >= m_fireRateDelay)
+                    {
+                        GameObject Fire = Instantiate(m_PrefabFire, transform.position, transform.rotation);
+                        m_StopWatch.Restart();
+                    }
+                }
             }
         }
     }
