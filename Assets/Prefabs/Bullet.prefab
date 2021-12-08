@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e75c9629531b6f1448651a7ff8cbd156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_movementSpeed: 10
+  m_movementSpeed: 50
   m_mainCamera: {fileID: 158827551841063217, guid: ebb93d33a05362d4a8b376bcbb9ee183, type: 3}
   m_deathDist: 250
 --- !u!54 &-8520309824980149323

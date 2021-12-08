@@ -49,9 +49,9 @@ MonoBehaviour:
   m_movementSpeed: 10
   m_mainCamera: {fileID: 158827551841063217, guid: ebb93d33a05362d4a8b376bcbb9ee183, type: 3}
   m_numCamera:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 9020937174855860242, guid: 8f162ed9fcbcbca428d46c34e3ade562, type: 3}
+  - {fileID: 8635508279499182932, guid: 8e7a1e367a89f3b40b9907a51cb09ab8, type: 3}
+  - {fileID: 6533641620114282776, guid: 01c3cdcf4758e3d40abc58b4048bf4d8, type: 3}
   m_fireRateDelay: 250
   m_PrefabFire: {fileID: 7018001257416534846, guid: f62334a38bb70c34fb25d68aac211190, type: 3}
 --- !u!1 &2011673422106282141

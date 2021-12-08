@@ -5,9 +5,12 @@ using System.Diagnostics;
 
 public class Player : Entity
 {
+    [Header("Level")]
     [SerializeField]
     private int m_LevelNumber;
+    private int m_LevelNumberTotal = 3;
 
+    [Header("Gameplay")]
     [SerializeField]
     private float m_movementSpeed;
 
@@ -25,7 +28,6 @@ public class Player : Entity
     private float m_fireRateDelay;
     [SerializeField]
     private GameObject m_PrefabFire;
-
     private Stopwatch m_StopWatch;
 
     public bool defaite=false;
@@ -42,7 +44,7 @@ public class Player : Entity
     // Start is called before the first frame update
     void Start()
     {
-        m_initialPosition = m_mainCamera.WorldToScreenPoint(transform.position);
+
     }
 
     // Update is called once per frame
@@ -50,48 +52,56 @@ public class Player : Entity
     {
         m_currentPosition = m_mainCamera.WorldToScreenPoint(transform.position);
 
-        if (m_LevelNumber == 1)
+        if (!m_numCamera[m_LevelNumber % m_LevelNumberTotal].activeSelf)
         {
-            //if(!.isActive())
+            m_numCamera[m_LevelNumber % m_LevelNumberTotal].SetActive(true);
+            m_numCamera[(m_LevelNumber + 1) % m_LevelNumberTotal].SetActive(false);
+            m_numCamera[(m_LevelNumber + 2) % m_LevelNumberTotal].SetActive(false);
+
+            m_initialPosition = m_mainCamera.WorldToScreenPoint(transform.position);
+        }
+
+        if (m_LevelNumber % m_LevelNumberTotal == 0)
+        {
+
             if (Input.GetKey(KeyCode.UpArrow) && m_currentPosition.y < m_initialPosition.y * 2)
                 transform.position += new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
 
             if (Input.GetKey(KeyCode.DownArrow) && m_currentPosition.y > 0)
                 transform.position -= new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
+
             if (Input.GetKey(KeyCode.Space))
             {
                 if (m_StopWatch.ElapsedMilliseconds >= m_fireRateDelay)
                 {
-                    GameObject Fire = Instantiate(m_PrefabFire, transform.position, new Quaternion(0,0,0,1));
+                    GameObject FireLeft = Instantiate(m_PrefabFire, transform.position + new Vector3(-0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
+                    GameObject FireRight = Instantiate(m_PrefabFire, transform.position + new Vector3(0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
                     Bullet.OnHit += OnBulletHit;
                     m_StopWatch.Restart();
                 }
             }
         }
-        else if (m_LevelNumber == 2)
+        else if (m_LevelNumber % m_LevelNumberTotal == 1)
         {
 
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-                transform.position += new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
-
             if (Input.GetKey(KeyCode.RightArrow))
-                transform.position += new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
-
-
-            if (Input.GetKey(KeyCode.LeftArrow))
                 transform.position -= new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
 
+            if (Input.GetKey(KeyCode.LeftArrow))
+                transform.position += new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
+
             if (Input.GetKey(KeyCode.UpArrow))
-                transform.position += new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
+                transform.position -= new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
 
             if (Input.GetKey(KeyCode.DownArrow))
-                transform.position -= new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
+                transform.position += new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
 
             if (Input.GetKey(KeyCode.Space))
             {
                 if (m_StopWatch.ElapsedMilliseconds >= m_fireRateDelay)
                 {
-                    GameObject Fire = Instantiate(m_PrefabFire, transform.position, new Quaternion(0, 0, 0, 1));
+                    GameObject FireLeft = Instantiate(m_PrefabFire, transform.position + new Vector3(-0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
+                    GameObject FireRight = Instantiate(m_PrefabFire, transform.position + new Vector3(0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
                     Bullet.OnHit += OnBulletHit;
                     m_StopWatch.Restart();
                 }
@@ -99,6 +109,7 @@ public class Player : Entity
         }
         else
         {
+
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 transform.position += new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
@@ -123,27 +134,27 @@ public class Player : Entity
             {
                 if (m_StopWatch.ElapsedMilliseconds >= m_fireRateDelay)
                 {
-                    GameObject Fire = Instantiate(m_PrefabFire, transform.position, new Quaternion(0, 0, 0, 1));
+                    GameObject FireLeft = Instantiate(m_PrefabFire, transform.position + new Vector3(-0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
+                    GameObject FireRight = Instantiate(m_PrefabFire, transform.position + new Vector3(0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
                     Bullet.OnHit += OnBulletHit;
                     m_StopWatch.Restart();
                 }
             }
         }
     }
-   
+
 
     private void InitializeCamera()
     {
         m_initialPosition = m_mainCamera.WorldToScreenPoint(transform.position);
     }
-
     void OnCollisionEnter(Collision collision)
     {
         float hp_max = current_hp;
-        if (collision.gameObject.tag=="Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
-            
-            for (float i=hp_max;i>0;i--)
+
+            for (float i = hp_max; i > 0; i--)
             {
                 if (current_hp != 0)
                 {
@@ -154,13 +165,13 @@ public class Player : Entity
                     Destroy(gameObject);
                     defaite = true;
                 }
-                   
+
 
             }
-            
+
 
         }
-        if( collision.gameObject.tag == "Bullet_enemy")
+        if (collision.gameObject.tag == "Bullet_enemy")
         {
             for (float i = hp_max; i > 0; i--)
             {
@@ -173,7 +184,7 @@ public class Player : Entity
                     Destroy(gameObject);
                     defaite = true;
                 }
-                    
+
             }
         }
     }

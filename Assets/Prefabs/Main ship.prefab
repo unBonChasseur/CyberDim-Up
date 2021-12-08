@@ -44,10 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 217d1f0743c0504418b12bebd2d1d773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LevelNumber: 2
-  m_movementSpeed: 10
+  m_LevelNumber: 0
+  m_movementSpeed: 40
   m_mainCamera: {fileID: 158827551841063217, guid: ebb93d33a05362d4a8b376bcbb9ee183, type: 3}
-  m_numCamera: []
+  m_numCamera:
+  - {fileID: 9020937174855860242, guid: 8f162ed9fcbcbca428d46c34e3ade562, type: 3}
+  - {fileID: 8635508279499182932, guid: 8e7a1e367a89f3b40b9907a51cb09ab8, type: 3}
+  - {fileID: 6533641620114282776, guid: 01c3cdcf4758e3d40abc58b4048bf4d8, type: 3}
   m_fireRateDelay: 100
   m_PrefabFire: {fileID: 7018001257416534846, guid: f62334a38bb70c34fb25d68aac211190, type: 3}
 --- !u!1 &7511416555341689622
