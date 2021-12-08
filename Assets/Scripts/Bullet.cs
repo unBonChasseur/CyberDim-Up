@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class Bullet : MonoBehaviour
 {
@@ -14,12 +16,14 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private float m_deathDist;
 
+    public static event Action OnHit;
+
+
     // Start is called before the first frame update
     void Start()
     {
 
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -29,5 +33,18 @@ public class Bullet : MonoBehaviour
 
         if (m_currentPosition.y > m_deathDist)
             Destroy(gameObject, 0);
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            //if(collision.gameObject.GetComponent<Enemy>(hp_max))
+            OnHit();
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "Bullet_enemy")
+        {
+            Destroy(gameObject);
+        }
     }
 }

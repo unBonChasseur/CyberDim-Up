@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Diagnostics;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
     [SerializeField]
     private int m_LevelNumber;
@@ -28,10 +28,15 @@ public class Player : MonoBehaviour
 
     private Stopwatch m_StopWatch;
 
+    public bool defaite=false;
+
+    private float score = 0;
+
     void Awake()
     {
         m_StopWatch = new Stopwatch();
         m_StopWatch.Start();
+        
     }
 
     // Start is called before the first frame update
@@ -58,6 +63,7 @@ public class Player : MonoBehaviour
                 if (m_StopWatch.ElapsedMilliseconds >= m_fireRateDelay)
                 {
                     GameObject Fire = Instantiate(m_PrefabFire, transform.position, new Quaternion(0,0,0,1));
+                    Bullet.OnHit += OnBulletHit;
                     m_StopWatch.Restart();
                 }
             }
@@ -86,6 +92,7 @@ public class Player : MonoBehaviour
                 if (m_StopWatch.ElapsedMilliseconds >= m_fireRateDelay)
                 {
                     GameObject Fire = Instantiate(m_PrefabFire, transform.position, new Quaternion(0, 0, 0, 1));
+                    Bullet.OnHit += OnBulletHit;
                     m_StopWatch.Restart();
                 }
             }
@@ -117,6 +124,7 @@ public class Player : MonoBehaviour
                 if (m_StopWatch.ElapsedMilliseconds >= m_fireRateDelay)
                 {
                     GameObject Fire = Instantiate(m_PrefabFire, transform.position, new Quaternion(0, 0, 0, 1));
+                    Bullet.OnHit += OnBulletHit;
                     m_StopWatch.Restart();
                 }
             }
@@ -128,8 +136,53 @@ public class Player : MonoBehaviour
     {
         m_initialPosition = m_mainCamera.WorldToScreenPoint(transform.position);
     }
-       
-    
+
+    void OnCollisionEnter(Collision collision)
+    {
+        float hp_max = current_hp;
+        if (collision.gameObject.tag=="Enemy")
+        {
+            
+            for (float i=hp_max;i>0;i--)
+            {
+                if (current_hp != 0)
+                {
+                    current_hp -= 5;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                    defaite = true;
+                }
+                   
+
+            }
+            
+
+        }
+        if( collision.gameObject.tag == "Bullet_enemy")
+        {
+            for (float i = hp_max; i > 0; i--)
+            {
+                if (current_hp != 0)
+                {
+                    current_hp -= 1;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                    defaite = true;
+                }
+                    
+            }
+        }
+    }
+    void OnBulletHit()
+    {
+        score += 1;
+    }
+
+
 }
 
 
