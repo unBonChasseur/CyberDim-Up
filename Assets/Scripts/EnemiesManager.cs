@@ -8,23 +8,34 @@ public class EnemiesManager : MonoBehaviour
     private GameObject m_prefabEnemy;
 
     [SerializeField]
-    private GameObject m_spawnDelay;
+    private float m_spawnDelay = 2f;
+
+   
 
     // Start is called before the first frame update
     void Start()
     {
-
+        StartCoroutine(EnnemySpawn());
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (Application.isPlaying)
-            StartCoroutine(EnnemySpawn());
+    { 
+               
+
     }
 
     private IEnumerator EnnemySpawn()
     {
-        return null;
+        while(Application.isPlaying)
+        {
+            yield return new WaitForSeconds(m_spawnDelay);
+            Vector3 spawnPos = Vector3.zero;
+            spawnPos.x = Random.Range(-9f, 9f);
+            spawnPos.y = 5f;
+            GameObject enemy = Instantiate(m_prefabEnemy, spawnPos, new Quaternion(0, 0, 0, 1));
+           
+        }
+       
     }
 }

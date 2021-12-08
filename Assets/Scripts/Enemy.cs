@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField]
+    private float vitesse = 2f;
+
+    [SerializeField]
+    private Camera m_mainCamera;
+
+    private Vector3 m_currentPosition;
+
+    [SerializeField]
+    private float m_deathDist;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +24,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        m_currentPosition = m_mainCamera.WorldToScreenPoint(transform.position);
+
+        transform.position += new Vector3(0,-vitesse * Time.deltaTime, 0);
+
+        if (m_currentPosition.y < m_deathDist)
+            Destroy(gameObject);
     }
 }
