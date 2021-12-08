@@ -48,55 +48,65 @@ public class Player : MonoBehaviour
 
             if (Input.GetKey(KeyCode.DownArrow) && m_currentPosition.y > 0)
                 transform.position -= new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
+            if (Input.GetKey(KeyCode.Space))
+            {
+                if (m_StopWatch.ElapsedMilliseconds >= m_fireRateDelay)
+                {
+                    GameObject Fire = Instantiate(m_PrefabFire, transform.position, new Quaternion(0,0,0,1));
+                    m_StopWatch.Restart();
+                }
+            }
+        }
+        else if (m_LevelNumber == 2)
+        {
+            if (Input.GetKey(KeyCode.RightArrow) && m_currentPosition.x < m_initialPosition.x * 2)
+                transform.position += new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
+
+            if (Input.GetKey(KeyCode.LeftArrow) && m_currentPosition.x > 0)
+                transform.position -= new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
+
+            if (Input.GetKey(KeyCode.UpArrow) && m_currentPosition.y < m_initialPosition.y * 2)
+                transform.position += new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
+
+            if (Input.GetKey(KeyCode.DownArrow) && m_currentPosition.y > 0)
+                transform.position -= new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
+
+            if (Input.GetKey(KeyCode.Space))
+            {
+                if (m_StopWatch.ElapsedMilliseconds >= m_fireRateDelay)
+                {
+                    GameObject Fire = Instantiate(m_PrefabFire, transform.position, new Quaternion(0, 0, 0, 1));
+                    m_StopWatch.Restart();
+                }
+            }
         }
         else
         {
-            if (m_LevelNumber == 2)
+            if (Input.GetKey(KeyCode.RightArrow) && m_currentPosition.x < m_initialPosition.x * 2)
+                transform.position += new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
+
+            if (Input.GetKey(KeyCode.LeftArrow) && m_currentPosition.x > 0)
+                transform.position -= new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
+
+            if (Input.GetKey(KeyCode.UpArrow) && m_currentPosition.y < m_initialPosition.y * 2)
+                transform.position += new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
+
+            if (Input.GetKey(KeyCode.DownArrow) && m_currentPosition.y > 0)
+                transform.position -= new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
+
+            if (Input.GetKey(KeyCode.Space))
             {
-                if (Input.GetKey(KeyCode.RightArrow) && m_currentPosition.x < m_initialPosition.x * 2)
-                    transform.position += new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
-
-                if (Input.GetKey(KeyCode.LeftArrow) && m_currentPosition.x > 0)
-                    transform.position -= new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
-
-                if (Input.GetKey(KeyCode.UpArrow) && m_currentPosition.y < m_initialPosition.y * 2)
-                    transform.position += new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
-
-                if (Input.GetKey(KeyCode.DownArrow) && m_currentPosition.y > 0)
-                    transform.position -= new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
-
-                if (Input.GetKey(KeyCode.Space))
+                if (m_StopWatch.ElapsedMilliseconds >= m_fireRateDelay)
                 {
-                    if(m_StopWatch.ElapsedMilliseconds >= m_fireRateDelay)
-                    {
-                        GameObject Fire = Instantiate(m_PrefabFire, transform.position, transform.rotation);
-                        m_StopWatch.Restart();
-                    }
-                }
-            }
-            else
-            {
-                if (Input.GetKey(KeyCode.RightArrow) && m_currentPosition.x < m_initialPosition.x * 2)
-                    transform.position += new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
-
-                if (Input.GetKey(KeyCode.LeftArrow) && m_currentPosition.x > 0)
-                    transform.position -= new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
-
-                if (Input.GetKey(KeyCode.UpArrow) && m_currentPosition.y < m_initialPosition.y * 2)
-                    transform.position += new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
-
-                if (Input.GetKey(KeyCode.DownArrow) && m_currentPosition.y > 0)
-                    transform.position -= new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
-
-                if (Input.GetKey(KeyCode.Space))
-                {
-                    if (m_StopWatch.ElapsedMilliseconds >= m_fireRateDelay)
-                    {
-                        GameObject Fire = Instantiate(m_PrefabFire, transform.position, transform.rotation);
-                        m_StopWatch.Restart();
-                    }
+                    GameObject Fire = Instantiate(m_PrefabFire, transform.position, new Quaternion(0, 0, 0, 1));
+                    m_StopWatch.Restart();
                 }
             }
         }
     }
+   
+       
+    
 }
+
+
