@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_movementSpeed: 10
-  m_mainCamera: {fileID: 5581904964808663145, guid: 2d5db40e34e0bd246a0885235ecced30, type: 3}
+  m_mainCamera: {fileID: 158827551841063217, guid: ebb93d33a05362d4a8b376bcbb9ee183, type: 3}
   m_deathDist: 250
 --- !u!54 &-8520309824980149323
 Rigidbody:
