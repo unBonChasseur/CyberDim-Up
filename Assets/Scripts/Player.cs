@@ -98,6 +98,9 @@ public class Player : Entity
                 {
                     if (m_FireStopWatch.ElapsedMilliseconds >= m_fireRateDelay)
                     {
+
+                        UnityEngine.Debug.Log("Player : " + m_initialPosition + "<-- init||current -->" + m_currentPosition);
+
                         // On créé les tirs pour qu'ils partent exactement des canons
                         GameObject FireLeft = Instantiate(m_PrefabFire, transform.position + new Vector3(-0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
                         GameObject FireRight = Instantiate(m_PrefabFire, transform.position + new Vector3(0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
