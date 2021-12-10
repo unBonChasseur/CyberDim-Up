@@ -66,48 +66,31 @@ public class Player : Entity
     void Update()
     {
         m_currentPosition = m_mainCamera.WorldToScreenPoint(transform.position);
-        //UnityEngine.Debug.Log("x : " + m_currentPosition.x + " < " + (m_initialPosition.x - m_marginCamera));
-        //UnityEngine.Debug.Log("y : " + m_currentPosition.y + " < " + (m_initialPosition.y * 2 - m_marginCamera));
-        
+
         // Changement de caméra en fonction du niveau sélectionné
         if (!m_Cinemachines[m_LevelNumber % m_NbCinemachines].activeSelf)
         {
             for (int i = 0; i < m_NbCinemachines; i++)
                 m_Cinemachines[i].SetActive(false);
 
-            transform.position = new Vector3(0, -1000, -1000);
+            transform.position = new Vector3(0.35f, -1000, -1000);
             m_Cinemachines[m_LevelNumber % m_NbCinemachines].SetActive(true);
 
             m_CamStopWatch.Restart();
         }
 
-        if(m_CamStopWatch.ElapsedMilliseconds >= m_camTransitionTime)
+        if (m_CamStopWatch.ElapsedMilliseconds >= m_camTransitionTime)
         {
             if (m_LevelNumber % m_NbCinemachines == 1)
             {
 
                 // Gestion des déplacements
-                if (Input.GetKey(KeyCode.UpArrow) && m_currentPosition.y < (m_initialPosition.y * 2) - m_marginCamera)
+                if (Input.GetKey(KeyCode.UpArrow) && m_currentPosition.y < m_mainCamera.pixelHeight - m_marginCamera)
                     transform.position += new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
 
                 if (Input.GetKey(KeyCode.DownArrow) && m_currentPosition.y > m_marginCamera)
                     transform.position -= new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
 
-                // Gestion des tirs
-                if (Input.GetKey(KeyCode.Space))
-                {
-                    if (m_FireStopWatch.ElapsedMilliseconds >= m_fireRateDelay)
-                    {
-
-                        UnityEngine.Debug.Log("Player : " + m_initialPosition + "<-- init||current -->" + m_currentPosition);
-
-                        // On créé les tirs pour qu'ils partent exactement des canons
-                        GameObject FireLeft = Instantiate(m_PrefabFire, transform.position + new Vector3(-0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
-                        GameObject FireRight = Instantiate(m_PrefabFire, transform.position + new Vector3(0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
-                        Bullet.OnHit += OnBulletHit;
-                        m_FireStopWatch.Restart();
-                    }
-                }
             }
             else if (m_LevelNumber % m_NbCinemachines == 2)
             {
@@ -115,27 +98,15 @@ public class Player : Entity
                 if (Input.GetKey(KeyCode.LeftArrow) && m_currentPosition.x > m_marginCamera)
                     transform.position += new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
 
-                if (Input.GetKey(KeyCode.RightArrow) && m_currentPosition.x < (m_initialPosition.x*2) - m_marginCamera)
+                if (Input.GetKey(KeyCode.RightArrow) && m_currentPosition.x < m_mainCamera.pixelWidth - m_marginCamera)
                     transform.position -= new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
 
                 if (Input.GetKey(KeyCode.DownArrow) && m_currentPosition.y > m_marginCamera)
                     transform.position += new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
 
-                if (Input.GetKey(KeyCode.UpArrow) && m_currentPosition.y < (m_initialPosition.y * 2) - m_marginCamera)
+                if (Input.GetKey(KeyCode.UpArrow) && m_currentPosition.y < m_mainCamera.pixelHeight - m_marginCamera)
                     transform.position -= new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
 
-                // Gestion des tirs
-                if (Input.GetKey(KeyCode.Space))
-                {
-                    if (m_FireStopWatch.ElapsedMilliseconds >= m_fireRateDelay)
-                    {
-                        // On créé les tirs pour qu'ils partent exactement des canons
-                        GameObject FireLeft = Instantiate(m_PrefabFire, transform.position + new Vector3(-0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
-                        GameObject FireRight = Instantiate(m_PrefabFire, transform.position + new Vector3(0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
-                        Bullet.OnHit += OnBulletHit;
-                        m_FireStopWatch.Restart();
-                    }
-                }
             }
             else if (m_LevelNumber % m_NbCinemachines == 3)
             {
@@ -151,33 +122,32 @@ public class Player : Entity
                 if (Input.GetKey(KeyCode.LeftArrow) && m_currentPosition.x > m_marginCamera)
                     transform.position += new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
 
-                if (Input.GetKey(KeyCode.RightArrow) && m_currentPosition.x < (m_initialPosition.x*2) - m_marginCamera)
+                if (Input.GetKey(KeyCode.RightArrow) && m_currentPosition.x < m_mainCamera.pixelWidth - m_marginCamera)
                     transform.position -= new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
 
-                if (Input.GetKey(KeyCode.UpArrow) && m_currentPosition.y < (m_initialPosition.y * 2) - m_marginCamera)
+                if (Input.GetKey(KeyCode.UpArrow) && m_currentPosition.y < m_mainCamera.pixelHeight - m_marginCamera)
                     transform.position += new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
 
                 if (Input.GetKey(KeyCode.DownArrow) && m_currentPosition.y > m_marginCamera)
                     transform.position -= new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
 
-                // Gestion des tirs
-                if (Input.GetKey(KeyCode.Space))
+            }
+
+            if (Input.GetKey(KeyCode.Space) && m_LevelNumber % m_NbCinemachines != 0)
+            {
+                if (m_FireStopWatch.ElapsedMilliseconds >= m_fireRateDelay)
                 {
-                    if (m_FireStopWatch.ElapsedMilliseconds >= m_fireRateDelay)
-                    {
-                        // On créé les tirs pour qu'ils partent exactement des canons
-                        GameObject FireLeft = Instantiate(m_PrefabFire, transform.position + new Vector3(-0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
-                        GameObject FireRight = Instantiate(m_PrefabFire, transform.position + new Vector3(0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
-                        Bullet.OnHit += OnBulletHit;
-                        m_FireStopWatch.Restart();
-                    }
+                    // On créé les tirs pour qu'ils partent exactement des canons
+                    GameObject FireLeft = Instantiate(m_PrefabFire, transform.position + new Vector3(-0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
+                    GameObject FireRight = Instantiate(m_PrefabFire, transform.position + new Vector3(0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
+                    Bullet.OnHit += OnBulletHit;
+                    m_FireStopWatch.Restart();
                 }
             }
         }
         else
         {
             m_initialPosition = m_mainCamera.WorldToScreenPoint(transform.position);
-            //UnityEngine.Debug.Log(m_initialPosition + "<- Init || Current ->" + m_currentPosition);
         }
     }
 

@@ -10,31 +10,24 @@ public class Bullet : MonoBehaviour
 
     [SerializeField]
     private Camera m_mainCamera;
-    private Vector3 m_initialPosition; 
-    private Vector3 m_currentPosition;
+
+    [SerializeField]
+    private float m_maxRange = 1075;
 
     public static event Action OnHit;
-
 
     // Start is called before the first frame update
     void Start()
     {
-        m_initialPosition = m_mainCamera.WorldToScreenPoint(transform.position);
-
-        //Debug.Log("Bullet : " + m_initialPosition + "<-- init||current -->" + m_currentPosition);
     }
+
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("Bullet : " + m_initialPosition + "<-- init||current -->" + m_currentPosition);
-
-        m_currentPosition = m_mainCamera.WorldToScreenPoint(transform.position);
-
         transform.position -= new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
 
-        if (Mathf.Abs(m_currentPosition.x) > Mathf.Abs(2 * m_initialPosition.x))
+        if (Mathf.Abs(transform.position.z) >= m_maxRange)
         {
-            Debug.Log("Bullet : " + m_initialPosition + "<-- init||current -->" + m_currentPosition);
             Destroy(gameObject, 0);
         }
     }
