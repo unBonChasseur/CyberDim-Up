@@ -243,8 +243,8 @@ Camera:
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &499162260 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8119367265369738317, guid: 651654acaf1f30646a2b05229a156c10, type: 3}
-  m_PrefabInstance: {fileID: 8119367265155862745}
+  m_CorrespondingSourceObject: {fileID: 7852684227672718430, guid: 5ba112534f8699849a2073aa412b0fa8, type: 3}
+  m_PrefabInstance: {fileID: 7852684228121469130}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &772369870 stripped
 GameObject:
@@ -597,7 +597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5680684123457051653, guid: c4cb2e8c158a02a47919691e354d18ef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -952
+      value: -95
       objectReference: {fileID: 0}
     - target: {fileID: 5680684123457051653, guid: c4cb2e8c158a02a47919691e354d18ef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -763,71 +763,67 @@ PrefabInstance:
       objectReference: {fileID: 569734184555855825}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccf7af6d86783cc468943f95ed82ae91, type: 3}
---- !u!1001 &8119367265155862745
+--- !u!1001 &7852684228121469130
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8119367265369738316, guid: 651654acaf1f30646a2b05229a156c10, type: 3}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 206592184839698507}
-    - target: {fileID: 8119367265369738317, guid: 651654acaf1f30646a2b05229a156c10, type: 3}
-      propertyPath: m_Name
-      value: Cam Level 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8119367265369738317, guid: 651654acaf1f30646a2b05229a156c10, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8119367265369738319, guid: 651654acaf1f30646a2b05229a156c10, type: 3}
+    - target: {fileID: 7852684227672718428, guid: 5ba112534f8699849a2073aa412b0fa8, type: 3}
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 8119367265369738319, guid: 651654acaf1f30646a2b05229a156c10, type: 3}
+    - target: {fileID: 7852684227672718428, guid: 5ba112534f8699849a2073aa412b0fa8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.35
       objectReference: {fileID: 0}
-    - target: {fileID: 8119367265369738319, guid: 651654acaf1f30646a2b05229a156c10, type: 3}
+    - target: {fileID: 7852684227672718428, guid: 5ba112534f8699849a2073aa412b0fa8, type: 3}
       propertyPath: m_LocalPosition.y
       value: -950
       objectReference: {fileID: 0}
-    - target: {fileID: 8119367265369738319, guid: 651654acaf1f30646a2b05229a156c10, type: 3}
+    - target: {fileID: 7852684227672718428, guid: 5ba112534f8699849a2073aa412b0fa8, type: 3}
       propertyPath: m_LocalPosition.z
       value: -1025
       objectReference: {fileID: 0}
-    - target: {fileID: 8119367265369738319, guid: 651654acaf1f30646a2b05229a156c10, type: 3}
+    - target: {fileID: 7852684227672718428, guid: 5ba112534f8699849a2073aa412b0fa8, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8119367265369738319, guid: 651654acaf1f30646a2b05229a156c10, type: 3}
+    - target: {fileID: 7852684227672718428, guid: 5ba112534f8699849a2073aa412b0fa8, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8119367265369738319, guid: 651654acaf1f30646a2b05229a156c10, type: 3}
+    - target: {fileID: 7852684227672718428, guid: 5ba112534f8699849a2073aa412b0fa8, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0.7071068
       objectReference: {fileID: 0}
-    - target: {fileID: 8119367265369738319, guid: 651654acaf1f30646a2b05229a156c10, type: 3}
+    - target: {fileID: 7852684227672718428, guid: 5ba112534f8699849a2073aa412b0fa8, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.7071068
       objectReference: {fileID: 0}
-    - target: {fileID: 8119367265369738319, guid: 651654acaf1f30646a2b05229a156c10, type: 3}
+    - target: {fileID: 7852684227672718428, guid: 5ba112534f8699849a2073aa412b0fa8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 8119367265369738319, guid: 651654acaf1f30646a2b05229a156c10, type: 3}
+    - target: {fileID: 7852684227672718428, guid: 5ba112534f8699849a2073aa412b0fa8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
-    - target: {fileID: 8119367265369738319, guid: 651654acaf1f30646a2b05229a156c10, type: 3}
+    - target: {fileID: 7852684227672718428, guid: 5ba112534f8699849a2073aa412b0fa8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7852684227672718430, guid: 5ba112534f8699849a2073aa412b0fa8, type: 3}
+      propertyPath: m_Name
+      value: Cam Level 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7852684227672718431, guid: 5ba112534f8699849a2073aa412b0fa8, type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 206592184839698507}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 651654acaf1f30646a2b05229a156c10, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 5ba112534f8699849a2073aa412b0fa8, type: 3}
 --- !u!1 &9020937173907146581 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5680684123457051655, guid: c4cb2e8c158a02a47919691e354d18ef, type: 3}
@@ -854,7 +850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9161623766240749648, guid: 060bb9ff20c4c854685990ea0e03881e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -952
+      value: -95
       objectReference: {fileID: 0}
     - target: {fileID: 9161623766240749648, guid: 060bb9ff20c4c854685990ea0e03881e, type: 3}
       propertyPath: m_LocalRotation.w
