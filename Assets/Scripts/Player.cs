@@ -44,6 +44,8 @@ public class Player : Entity
 
     private float m_score;
 
+    public float hp_max;
+
     void Awake()
     {
         m_CamStopWatch = new Stopwatch();
@@ -59,6 +61,7 @@ public class Player : Entity
         m_NbCinemachines = m_Cinemachines.Length;
         m_camTransitionTime = 2000;
         m_defaite = false;
+        hp_max = current_hp;
         m_score = 0;
     }
 
@@ -73,7 +76,7 @@ public class Player : Entity
             for (int i = 0; i < m_NbCinemachines; i++)
                 m_Cinemachines[i].SetActive(false);
 
-            transform.position = new Vector3(0.35f, -1000, -1000);
+            transform.position = new Vector3(4.072235f, -1000, -1000);
             m_Cinemachines[m_LevelNumber % m_NbCinemachines].SetActive(true);
 
             m_CamStopWatch.Restart();
@@ -154,7 +157,7 @@ public class Player : Entity
 
     void OnCollisionEnter(Collision collision)
     {
-        float hp_max = current_hp;
+        
         if (collision.gameObject.tag == "Enemy")
         {
 

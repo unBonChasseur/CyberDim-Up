@@ -30,10 +30,9 @@ public class EnemiesManager : MonoBehaviour
         while(Application.isPlaying)
         {
             yield return new WaitForSeconds(m_spawnDelay);
-            Vector3 spawnPos = Vector3.zero;
-            spawnPos.x = Random.Range(-9f, 9f);
-            spawnPos.y = 5f;
-            GameObject enemy = Instantiate(m_prefabEnemy, spawnPos, new Quaternion(0, 0, 0, 1));
+            Vector3 spawnPos = new Vector3(0,-1000,-1075);
+            spawnPos.x = Random.Range(-50f, 50f);
+            GameObject enemy = Instantiate(m_prefabEnemy, spawnPos, new Quaternion(0, 0, 90, 1));
            
         }
        

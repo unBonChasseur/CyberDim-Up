@@ -40,9 +40,10 @@ GameObject:
   m_Component:
   - component: {fileID: 425731885346500071}
   - component: {fileID: 1054775009933981532}
+  - component: {fileID: 6057653700529433187}
   m_Layer: 0
   m_Name: Vaisseau
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054775009933981533}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.35, y: -1000, z: -1000}
+  m_LocalPosition: {x: 4.072235, y: -1000, z: -1000}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 979731751598267583}
@@ -91,6 +92,19 @@ MonoBehaviour:
   m_fireRateDelay: 250
   m_PrefabFire: {fileID: 7018001257416534846, guid: f62334a38bb70c34fb25d68aac211190, type: 3}
   m_defaite: 0
+--- !u!65 &6057653700529433187
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054775009933981533}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8299742309968351108
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class Enemy : Entity
@@ -15,14 +16,27 @@ public class Enemy : Entity
     [SerializeField]
     private float m_deathDist;
 
+    [Header("Bullet")]
+    [SerializeField]
+    private float m_fireRateDelay;
+    [SerializeField]
+    private GameObject m_PrefabFire;
+    private Stopwatch m_FireStopWatch;
+
+    public float hp_max;
+
     void Awake()
     {
+        m_FireStopWatch = new Stopwatch();
+        m_FireStopWatch.Start();
         current_hp = 4;
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        hp_max = current_hp;
+
     }
 
     // Update is called once per frame
@@ -30,14 +44,19 @@ public class Enemy : Entity
     {
         m_currentPosition = m_mainCamera.WorldToScreenPoint(transform.position);
 
-        transform.position += new Vector3(0,-vitesse * Time.deltaTime, 0);
+        transform.position += new Vector3(0,0, vitesse * Time.deltaTime);
 
-        if (m_currentPosition.y < m_deathDist)
+        if (m_FireStopWatch.ElapsedMilliseconds >= m_fireRateDelay)
+        {
+            GameObject FireRight = Instantiate(m_PrefabFire, transform.position, new Quaternion(90, 0, 0, 1));
+            m_FireStopWatch.Restart();
+        }
+
+        if (m_currentPosition.y > m_deathDist)
             Destroy(gameObject);
     }
     void OnCollisionEnter(Collision collision)
     {
-        float hp_max = current_hp;
         if (collision.gameObject.tag == "Player")
         {
             Destroy(gameObject);

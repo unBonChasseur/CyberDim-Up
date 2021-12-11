@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet_enemy : MonoBehaviour
 {
     [SerializeField]
     private float m_movementSpeed;
@@ -14,8 +13,6 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private float m_maxRange = 1075;
 
-    public static event Action OnHit;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -25,22 +22,21 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position -= new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
+        transform.position += new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
 
         if (Mathf.Abs(transform.position.z) >= m_maxRange)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 0);
         }
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Player")
         {
-            //if(collision.gameObject.GetComponent<Enemy>(hp_max))
-            OnHit();
+    
             Destroy(gameObject);
         }
-        if (collision.gameObject.tag == "Bullet_enemy")
+        if (collision.gameObject.tag == "Bullet")
         {
             Destroy(gameObject);
         }
