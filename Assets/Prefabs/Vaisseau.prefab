@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054775009933981533}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.072235, y: -1000, z: -1000}
+  m_LocalPosition: {x: -0.35, y: -1000, z: -1000}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 979731751598267583}
@@ -92,6 +92,7 @@ MonoBehaviour:
   m_fireRateDelay: 250
   m_PrefabFire: {fileID: 7018001257416534846, guid: f62334a38bb70c34fb25d68aac211190, type: 3}
   m_defaite: 0
+  hp_max: 0
 --- !u!65 &6057653700529433187
 BoxCollider:
   m_ObjectHideFlags: 0

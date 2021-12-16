@@ -14,6 +14,7 @@ public class Entity : MonoBehaviour
     {
         current_hp = 10;
     }
+
     // Start is called before the first frame update
     void Start()
     {

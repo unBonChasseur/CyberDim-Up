@@ -31,8 +31,25 @@ public class EnemiesManager : MonoBehaviour
         {
             yield return new WaitForSeconds(m_spawnDelay);
             Vector3 spawnPos = new Vector3(0,-1000,-1075);
-            spawnPos.x = Random.Range(-50f, 50f);
-            GameObject enemy = Instantiate(m_prefabEnemy, spawnPos, new Quaternion(0, 0, 90, 1));
+            if (GameManager.current.m_level != 0)
+            {
+                if (GameManager.current.m_level == 1)
+                {
+                    spawnPos.y += Random.Range(-14.2f, 14.2f);
+                }
+                else if (GameManager.current.m_level == 2)
+                {
+                    spawnPos.x = Random.Range(-50f, 50f);
+                }
+                else if (GameManager.current.m_level == 3)
+                {
+                    spawnPos.y += Random.Range(-4.6f, 7.6f);
+                    spawnPos.x = Random.Range(-13f, 13f);
+                }
+
+                GameObject enemy = Instantiate(m_prefabEnemy, spawnPos, new Quaternion(0, 0, 90, 1));
+
+            }
            
         }
        

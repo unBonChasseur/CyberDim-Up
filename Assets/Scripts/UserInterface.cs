@@ -8,15 +8,20 @@ using UnityEngine;
 public class UserInterface : MonoBehaviour
 {
     [SerializeField]
-    private GameObject Gameover;
+    private GameObject m_Titre;
     [SerializeField]
-    private GameObject Bouton;
+    private GameObject m_BoutonPlay;
+
     [SerializeField]
-    private GameObject Texte;
+    private GameObject m_Gameover;
     [SerializeField]
-    private GameObject Jauge;
+    private GameObject m_BoutonRestart;
     [SerializeField]
-    private GameObject Joueur;
+    private GameObject m_TexteScore;
+    [SerializeField]
+    private GameObject m_JaugeVie;
+    [SerializeField]
+    private GameObject m_VaisseauJoueur;
 
     private void Awake()
     {
@@ -25,7 +30,7 @@ public class UserInterface : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
     // Update is called once per frame
     void Update()

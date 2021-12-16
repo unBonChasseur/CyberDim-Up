@@ -4,24 +4,24 @@ using UnityEngine;
 /// A singleton inheriting from MonoBehaviour.
 /// </summary>
 /// <typeparam name="T">Type of the class inheriting from MonoBehaviourSingleton.</typeparam>
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+public class Singleton : MonoBehaviour
 {
     /// <summary>
     /// Instance of the singleton.
     /// </summary>
-    private static T m_Instance;
+    private static Singleton m_Instance;
 
     /// <summary>
     /// Public access to the instance.
     /// </summary>
-    public static T Instance
+    public static Singleton Instance
     {
         get
         {
             if (m_Instance == null)
-                m_Instance = FindObjectOfType<T>();
+                m_Instance = FindObjectOfType<Singleton>();
             if (m_Instance == null)
-                Debug.LogError("Singleton<" + typeof(T) + "> instance has been not found.");
+                Debug.LogError("Singleton<" + typeof(Singleton) + "> instance has been not found.");
             return m_Instance;
         }
     }
@@ -33,7 +33,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         if (m_Instance == null)
         {
-            m_Instance = this as T;
+            m_Instance = this as Singleton;
         }
         else if (m_Instance != this)
             DestroySelf();
@@ -45,7 +45,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     protected void OnValidate()
     {
         if (m_Instance == null)
-            m_Instance = this as T;
+            m_Instance = this as Singleton;
         else if (m_Instance != this)
         {
             Debug.LogError("Singleton<" + this.GetType() + "> already has an instance on scene. Component will be destroyed.");
