@@ -34,9 +34,7 @@ public class Enemy : Entity
     // Start is called before the first frame update
     void Start()
     {
-
         hp_max = current_hp;
-
     }
 
     // Update is called once per frame

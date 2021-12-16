@@ -31,17 +31,17 @@ public class EnemiesManager : MonoBehaviour
         {
             yield return new WaitForSeconds(m_spawnDelay);
             Vector3 spawnPos = new Vector3(0,-1000,-1075);
-            if (GameManager.current.m_level != 0)
+            if (GameManager.current.m_Level != 0)
             {
-                if (GameManager.current.m_level == 1)
+                if (GameManager.current.m_Level == 1)
                 {
                     spawnPos.y += Random.Range(-14.2f, 14.2f);
                 }
-                else if (GameManager.current.m_level == 2)
+                else if (GameManager.current.m_Level == 2)
                 {
                     spawnPos.x = Random.Range(-50f, 50f);
                 }
-                else if (GameManager.current.m_level == 3)
+                else if (GameManager.current.m_Level == 3)
                 {
                     spawnPos.y += Random.Range(-4.6f, 7.6f);
                     spawnPos.x = Random.Range(-13f, 13f);

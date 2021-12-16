@@ -5,7 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager current = null;
-    public int m_level = 0;
+    public int m_Level = 0;
+    public bool m_GameOver = false;
 
     private void Awake()
     {
@@ -31,12 +32,22 @@ public class GameManager : MonoBehaviour
 
     public void SetNiveau(int niveau)
     {
-        this.m_level = niveau;
+        this.m_Level = niveau;
     }
 
     public int GetNiveau()
     {
-        return this.m_level;
+        return this.m_Level;
+    }
+
+    public void SetGameOver(bool gameover)
+    {
+        this.m_GameOver = gameover;
+    }
+
+    public bool GetGameOver()
+    {
+        return this.m_GameOver;
     }
 
     /// <summary>
