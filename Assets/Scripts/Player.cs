@@ -63,20 +63,20 @@ public class Player : Entity
         m_currentPosition = m_mainCamera.WorldToScreenPoint(transform.position);
 
         // Changement de caméra en fonction du niveau sélectionné
-        if (!m_Cinemachines[GameManager.current.m_Level % m_NbCinemachines].activeSelf)
+        if (!m_Cinemachines[GameManager.current.GetNiveau() % m_NbCinemachines].activeSelf)
         {
             for (int i = 0; i < m_NbCinemachines; i++)
                 m_Cinemachines[i].SetActive(false);
 
             transform.position = new Vector3(0, -1000, -1000);
-            m_Cinemachines[GameManager.current.m_Level % m_NbCinemachines].SetActive(true);
+            m_Cinemachines[GameManager.current.GetNiveau() % m_NbCinemachines].SetActive(true);
 
             m_CamStopWatch.Restart();
         }
 
         if (m_CamStopWatch.ElapsedMilliseconds >= m_camTransitionTime)
         {
-            if (GameManager.current.m_Level % m_NbCinemachines == 1)
+            if (GameManager.current.GetNiveau() % m_NbCinemachines == 1)
             {
 
                 // Gestion des déplacements
@@ -87,7 +87,7 @@ public class Player : Entity
                     transform.position -= new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
 
             }
-            else if (GameManager.current.m_Level % m_NbCinemachines == 2)
+            else if (GameManager.current.GetNiveau() % m_NbCinemachines == 2)
             {
                 // Gestion des déplacements
                 if (Input.GetKey(KeyCode.LeftArrow) && m_currentPosition.x > m_marginCamera)
@@ -103,7 +103,7 @@ public class Player : Entity
                     transform.position -= new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
 
             }
-            else if (GameManager.current.m_Level % m_NbCinemachines == 3)
+            else if (GameManager.current.GetNiveau() % m_NbCinemachines == 3)
             {
                 // Gestion des Rotations
                 float tiltAroundZ = Input.GetAxis("Horizontal") * -m_tiltAngle;
@@ -128,7 +128,7 @@ public class Player : Entity
 
             }
 
-            if (Input.GetKey(KeyCode.Space) && GameManager.current.m_Level % m_NbCinemachines != 0)
+            if (Input.GetKey(KeyCode.Space) && GameManager.current.GetNiveau() % m_NbCinemachines != 0)
             {
                 if (m_FireStopWatch.ElapsedMilliseconds >= m_fireRateDelay)
                 {

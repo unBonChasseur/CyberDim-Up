@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager current = null;
-    public int m_Level = 0;
-    public bool m_GameOver = false;
+    private int m_Level = 0;
+    private bool m_GameOver = false;
 
     private void Awake()
     {
@@ -48,6 +48,11 @@ public class GameManager : MonoBehaviour
     public bool GetGameOver()
     {
         return this.m_GameOver;
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
     /// <summary>
