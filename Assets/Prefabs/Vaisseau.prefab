@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 425731885346500071}
   - component: {fileID: 1054775009933981532}
   - component: {fileID: 6057653700529433187}
+  - component: {fileID: -4002501200359248081}
   m_Layer: 0
   m_Name: Vaisseau
   m_TagString: Player
@@ -77,7 +78,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP_max: 0
-  m_LevelNumber: 0
   m_movementSpeed: 50
   m_smooth: 10
   m_tiltAngle: 25
@@ -106,6 +106,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-4002501200359248081
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054775009933981533}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &8299742309968351108
 GameObject:
   m_ObjectHideFlags: 0
