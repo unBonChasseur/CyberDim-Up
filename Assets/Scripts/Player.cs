@@ -35,12 +35,9 @@ public class Player : Entity
     private GameObject m_PrefabFire;
     private Stopwatch m_FireStopWatch;
 
-
-    public bool m_defaite;
-
     private float m_score;
 
-    public float hp_max;
+    public float m_HpMax;
 
     void Awake()
     {
@@ -56,8 +53,7 @@ public class Player : Entity
     {
         m_NbCinemachines = m_Cinemachines.Length;
         m_camTransitionTime = 2000;
-        m_defaite = false;
-        hp_max = current_hp;
+        m_HpMax = current_hp;
         m_score = 0;
     }
 
@@ -152,7 +148,7 @@ public class Player : Entity
         if (collision.gameObject.tag == "Enemy")
         {
 
-            for (float i = hp_max; i > 0; i--)
+            for (float i = m_HpMax; i > 0; i--)
             {
                 if (current_hp != 0)
                 {
@@ -161,7 +157,7 @@ public class Player : Entity
                 else
                 {
                     Destroy(gameObject);
-                    m_defaite = true;
+                    GameManager.current.SetGameOver(true);
                 }
 
 
@@ -171,7 +167,7 @@ public class Player : Entity
         }
         if (collision.gameObject.tag == "Bullet_enemy")
         {
-            for (float i = hp_max; i > 0; i--)
+            for (float i = m_HpMax; i > 0; i--)
             {
                 if (current_hp != 0)
                 {
@@ -180,7 +176,7 @@ public class Player : Entity
                 else
                 {
                     Destroy(gameObject);
-                    m_defaite = true;
+                    GameManager.current.SetGameOver(true);
                 }
 
             }
