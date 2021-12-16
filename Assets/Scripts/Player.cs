@@ -156,8 +156,8 @@ public class Player : Entity
                 }
                 else
                 {
-                    Destroy(gameObject);
                     GameManager.current.SetGameOver(true);
+                    Destroy(gameObject);
                 }
 
 
@@ -175,8 +175,8 @@ public class Player : Entity
                 }
                 else
                 {
-                    Destroy(gameObject);
                     GameManager.current.SetGameOver(true);
+                    Destroy(gameObject);
                 }
 
             }

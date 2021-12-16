@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
-public class Bullet_enemy : MonoBehaviour
+public class Bonus : Entity
 {
     [SerializeField]
-    private float m_movementSpeed;
+    private float vitesse = 10f;
 
     [SerializeField]
     private Camera m_mainCamera;
 
-    [SerializeField]
-    private float m_maxRange;
+    void Awake()
+    {
+
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -22,23 +25,18 @@ public class Bullet_enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
 
-        if (transform.position.z >= m_maxRange)
-        {
-            Destroy(gameObject, 0);
-        }
+        transform.position += new Vector3(0,0, vitesse * Time.deltaTime);
+
+        if (transform.position.z > 1000)
+            Destroy(gameObject);
     }
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-    
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.tag == "Bullet")
-        {
             Destroy(gameObject);
         }
     }
+
 }

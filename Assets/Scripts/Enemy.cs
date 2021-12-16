@@ -6,11 +6,11 @@ using UnityEngine;
 public class Enemy : Entity
 {
     [SerializeField]
-    private float vitesse = 2f;
+    private float vitesse = 20f;
+    public float hp_max;
 
     [SerializeField]
     private Camera m_mainCamera;
-
     private Vector3 m_currentPosition;
 
     [SerializeField]
@@ -23,7 +23,9 @@ public class Enemy : Entity
     private GameObject m_PrefabFire;
     private Stopwatch m_FireStopWatch;
 
-    public float hp_max;
+    [Header("Bonus")]
+    [SerializeField]
+    private GameObject m_prefabBonus;
 
     void Awake()
     {
@@ -46,7 +48,7 @@ public class Enemy : Entity
 
         if (m_FireStopWatch.ElapsedMilliseconds >= m_fireRateDelay)
         {
-            GameObject FireRight = Instantiate(m_PrefabFire, transform.position, new Quaternion(90, 0, 0, 1));
+            GameObject FireRight = Instantiate(m_PrefabFire, transform.position, new Quaternion(0, 90, 90, 1));
             m_FireStopWatch.Restart();
         }
 
@@ -68,7 +70,13 @@ public class Enemy : Entity
                     current_hp -= 1;
                 }
                 else
+                {
+                    if (Random.Range(0, 1) < 0.5f)
+                    {
+                        //GameObject Bonus = Instantiate(m_prefabBonus, transform.position, new Quaternion(0, 90, 90, 1));
+                    }
                     Destroy(gameObject);
+                }
 
             }
         }
