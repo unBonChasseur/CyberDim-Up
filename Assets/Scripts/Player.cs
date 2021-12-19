@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Diagnostics;
+using System;
 
 public class Player : Entity
-{ 
+{
 
     [Header("Movements")]
     [SerializeField]
@@ -37,7 +38,15 @@ public class Player : Entity
 
     private float m_score;
 
-    public float m_HpMax;
+    private int m_HpMax;
+    [SerializeField]
+    private int currenthp_player;
+
+    public MeshRenderer rendu;
+
+    public healthbar Life_Jauge;
+
+    
 
     void Awake()
     {
@@ -46,14 +55,18 @@ public class Player : Entity
 
         m_FireStopWatch = new Stopwatch();
         m_FireStopWatch.Start();
+        current_hp = 10;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+       
         m_NbCinemachines = m_Cinemachines.Length;
         m_camTransitionTime = 2000;
         m_HpMax = current_hp;
+        currenthp_player = current_hp;
+        Life_Jauge.SetMaxHp(m_HpMax);
         m_score = 0;
     }
 
@@ -61,6 +74,7 @@ public class Player : Entity
     void Update()
     {
         m_currentPosition = m_mainCamera.WorldToScreenPoint(transform.position);
+        
 
         // Changement de caméra en fonction du niveau sélectionné
         if (!m_Cinemachines[GameManager.current.GetNiveau() % m_NbCinemachines].activeSelf)
@@ -81,10 +95,10 @@ public class Player : Entity
 
                 // Gestion des déplacements
                 if (Input.GetKey(KeyCode.UpArrow) && m_currentPosition.y < m_mainCamera.pixelHeight - m_marginCamera)
-                    transform.position += new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
+                    StartCoroutine(Up());
 
                 if (Input.GetKey(KeyCode.DownArrow) && m_currentPosition.y > m_marginCamera)
-                    transform.position -= new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
+                    StartCoroutine(Down());
 
             }
             else if (GameManager.current.GetNiveau() % m_NbCinemachines == 2)
@@ -141,47 +155,90 @@ public class Player : Entity
             }
         }
     }
+    private IEnumerator Up()
+    {
+       
+        transform.position += new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
+        yield return new WaitForSeconds(0.3f);
+       transform.position -= new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
+    }
+    private IEnumerator Down()
+    {
+        
+        transform.position -= new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
+        yield return new WaitForSeconds(0.3f);
+        transform.position += new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
+    }
+
 
     void OnCollisionEnter(Collision collision)
     {
-        
-        if (collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag != "Bullet")
         {
+            StartCoroutine(ClignotementDegats());
 
-            for (float i = m_HpMax; i > 0; i--)
+            if (collision.gameObject.tag == "Enemy")
             {
-                if (current_hp != 0)
+
+                for (float i = m_HpMax; i > 0; i--)
                 {
-                    current_hp -= 5;
-                }
-                else
-                {
-                    GameManager.current.SetGameOver(true);
-                    Destroy(gameObject);
+                    if (currenthp_player != 0)
+                    {
+                        currenthp_player -= 5;
+                        Life_Jauge.SetHp(currenthp_player);
+
+                    }
+                    else
+                    {
+                        GameManager.current.SetGameOver(true);
+                        Destroy(gameObject);
+                    }
+                    
+
                 }
 
 
             }
+            if (collision.gameObject.tag == "Bullet_enemy")
+            {
 
+                for (float i = m_HpMax; i > 0; i--)
+                {
+                    if (currenthp_player != 0 )
+                    {
+                        currenthp_player -= 1;
+                        Life_Jauge.SetHp(currenthp_player);
 
+                    }
+                    else
+                    {
+                        GameManager.current.SetGameOver(true);
+                        Destroy(gameObject);
+                    }
+                    
+
+                }
+
+            }
+            
         }
-        if (collision.gameObject.tag == "Bullet_enemy")
-        {
-            for (float i = m_HpMax; i > 0; i--)
-            {
-                if (current_hp != 0)
-                {
-                    current_hp -= 1;
-                }
-                else
-                {
-                    GameManager.current.SetGameOver(true);
-                    Destroy(gameObject);
-                }
+       
+    }
+ 
 
-            }
+    private IEnumerator ClignotementDegats()
+    {
+        for(int i=0;i<6;i++)
+        {
+            yield return new WaitForSeconds(0.3f);
+            rendu.material.color = Color.red;
+            yield return new WaitForSeconds(0.3f);
+            rendu.material.color = Color.white;
+
         }
     }
+   
+
     void OnBulletHit()
     {
         m_score += 1;

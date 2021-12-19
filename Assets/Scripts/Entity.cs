@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    [SerializeField]
-    private float HP_max;
+    //[SerializeField]
+   // private float HP_max;
 
-    protected float current_hp;
+    protected int current_hp;
     
 
     private void Awake()

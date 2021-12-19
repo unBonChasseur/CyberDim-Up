@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UserInterface : MonoBehaviour
 {
@@ -71,5 +72,5 @@ public class UserInterface : MonoBehaviour
             m_RestartButton.SetActive(true);
         }
     }
-
+   
 }

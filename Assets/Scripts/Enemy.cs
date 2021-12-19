@@ -7,7 +7,8 @@ public class Enemy : Entity
 {
     [SerializeField]
     private float vitesse = 20f;
-    public float hp_max;
+    private int hp_max;
+    private int currenthp_enemy;
 
     [SerializeField]
     private Camera m_mainCamera;
@@ -37,6 +38,7 @@ public class Enemy : Entity
     void Start()
     {
         hp_max = current_hp;
+        currenthp_enemy = current_hp;
     }
 
     // Update is called once per frame
@@ -65,16 +67,16 @@ public class Enemy : Entity
         {
             for (float i = hp_max; i > 0; i--)
             {
-                if (current_hp != 0)
+                if (currenthp_enemy!= 0)
                 {
-                    current_hp -= 1;
+                    currenthp_enemy -= 1;
                 }
                 else
                 {
-                    if (Random.Range(0, 1) < 0.5f)
-                    {
+                    //if (Random.Range(0, 1) < 0.5f)
+                    //{
                         //GameObject Bonus = Instantiate(m_prefabBonus, transform.position, new Quaternion(0, 90, 90, 1));
-                    }
+                    //}
                     Destroy(gameObject);
                 }
 
