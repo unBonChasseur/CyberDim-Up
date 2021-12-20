@@ -27,6 +27,10 @@ public class Enemy : Entity
     [SerializeField]
     private GameObject m_prefabBonus;
 
+    public AudioClip shot;
+    public AudioClip destroy;
+    public AudioSource m_audio;
+
     void Awake()
     {
         m_StopWatchBullet = new Stopwatch();
@@ -49,6 +53,8 @@ public class Enemy : Entity
         {
             GameObject FireRight = Instantiate(m_PrefabFire, transform.position, new Quaternion(0, 90, 90, 1));
             m_StopWatchBullet.Restart();
+            m_audio.PlayOneShot(shot, 0.5f);
+
         }
 
         if (m_CurrentPosition.y > m_DeathDist)
@@ -60,6 +66,7 @@ public class Enemy : Entity
         if (collision.gameObject.tag == "Player")
         {
             Destroy(gameObject);
+            m_audio.PlayOneShot(destroy, 0.5f);
         }
         if (collision.gameObject.tag == "Bullet")
         {
@@ -76,6 +83,7 @@ public class Enemy : Entity
                 }
 
                 Destroy(gameObject);
+                m_audio.PlayOneShot(destroy, 0.5f);
             }
         }
     }

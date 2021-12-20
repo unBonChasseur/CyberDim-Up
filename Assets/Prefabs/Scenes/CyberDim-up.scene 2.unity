@@ -226,6 +226,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ennemies
       objectReference: {fileID: 0}
+    - target: {fileID: 3995488461102311163, guid: b56825fbc146ebd469526535d2a544b8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3995488461102311165, guid: b56825fbc146ebd469526535d2a544b8, type: 3}
       propertyPath: m_spawnDelay
       value: 4
@@ -415,6 +419,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4331326237461404841, guid: 5e2b5202f37e8254a9f155ff693c69c7, type: 3}
   m_PrefabInstance: {fileID: 4331326236911443742}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &2041667156 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2041667156, guid: 0e5a06d798356174986b124efd0f4c78, type: 3}
+  m_PrefabInstance: {fileID: 1258490391100983206}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2054971298 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4331326238146937020, guid: 5e2b5202f37e8254a9f155ff693c69c7, type: 3}
@@ -477,46 +486,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 88466889, guid: aeaf91dec8e444442814dd6b73bb5e93, type: 3}
-      propertyPath: m_RenderMode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 88466890, guid: aeaf91dec8e444442814dd6b73bb5e93, type: 3}
-      propertyPath: ShapeModule.type
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 88466890, guid: aeaf91dec8e444442814dd6b73bb5e93, type: 3}
-      propertyPath: TrailModule.ribbonCount
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 88466890, guid: aeaf91dec8e444442814dd6b73bb5e93, type: 3}
-      propertyPath: ShapeModule.radiusThickness
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 88466890, guid: aeaf91dec8e444442814dd6b73bb5e93, type: 3}
-      propertyPath: TrailModule.attachRibbonsToTransform
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105371181, guid: aeaf91dec8e444442814dd6b73bb5e93, type: 3}
-      propertyPath: m_RenderMode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105371182, guid: aeaf91dec8e444442814dd6b73bb5e93, type: 3}
-      propertyPath: TrailModule.ribbonCount
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105371182, guid: aeaf91dec8e444442814dd6b73bb5e93, type: 3}
-      propertyPath: InitialModule.maxNumParticles
-      value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105371182, guid: aeaf91dec8e444442814dd6b73bb5e93, type: 3}
-      propertyPath: TrailModule.attachRibbonsToTransform
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 559951839601915834, guid: aeaf91dec8e444442814dd6b73bb5e93, type: 3}
       propertyPath: m_Name
       value: Vaisseau
       objectReference: {fileID: 0}
+    - target: {fileID: 559951839601915835, guid: aeaf91dec8e444442814dd6b73bb5e93, type: 3}
+      propertyPath: shot
+      value: 
+      objectReference: {fileID: 8300000, guid: 85f47b1703d876e49892ad3dc8433454, type: 3}
+    - target: {fileID: 559951839601915835, guid: aeaf91dec8e444442814dd6b73bb5e93, type: 3}
+      propertyPath: m_audio
+      value: 
+      objectReference: {fileID: 2041667156}
     - target: {fileID: 559951839601915835, guid: aeaf91dec8e444442814dd6b73bb5e93, type: 3}
       propertyPath: m_Camera
       value: 
@@ -646,10 +627,6 @@ PrefabInstance:
       propertyPath: m_Boss
       value: 
       objectReference: {fileID: 919132148655554248}
-    - target: {fileID: 1258490391236483417, guid: 0e5a06d798356174986b124efd0f4c78, type: 3}
-      propertyPath: m_level
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1258490391236483417, guid: 0e5a06d798356174986b124efd0f4c78, type: 3}
       propertyPath: m_ScoreText
       value: 

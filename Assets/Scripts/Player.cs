@@ -42,6 +42,11 @@ public class Player : Entity
     public Slider m_LifeGauge;
     private float m_HPCurrent;
 
+    public AudioClip shot;
+    public AudioClip bonus;
+    public AudioClip degat;
+    public AudioSource m_audio;
+
     void Awake()
     {
         m_StopWatchCamera = new Stopwatch();
@@ -161,6 +166,7 @@ public class Player : Entity
                     GameObject FireLeft = Instantiate(m_PrefabFire, transform.position + new Vector3(-0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
                     GameObject FireRight = Instantiate(m_PrefabFire, transform.position + new Vector3(0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
                     m_StopWatchBullets.Restart();
+                    m_audio.PlayOneShot(shot, 1f);
                 }
             }
         }
@@ -185,6 +191,7 @@ public class Player : Entity
                     GameManager.current.SetGameOver(true);
                     Destroy(gameObject);
                 }
+                m_audio.PlayOneShot(degat, 1f);
             }
             if (collision.gameObject.tag == "Bullet_enemy")
             {
@@ -198,6 +205,7 @@ public class Player : Entity
                     GameManager.current.SetGameOver(true);
                     Destroy(gameObject);
                 }
+                m_audio.PlayOneShot(degat, 1f);
             }
             if (collision.gameObject.tag == "Bonus")
             {
@@ -205,6 +213,7 @@ public class Player : Entity
                 GameManager.current.AddScore(4);
                 m_HPCurrent = m_HPMax;
                 m_LifeGauge.value = m_HPCurrent;
+                m_audio.PlayOneShot(bonus, 1f);
             }
             if (collision.gameObject.tag == "Boss")
             {
@@ -212,6 +221,8 @@ public class Player : Entity
                 m_HPCurrent -= 10;
                 GameManager.current.SetGameOver(true);
                 Destroy(gameObject);
+                m_audio.PlayOneShot(degat, 1f);
+
             }
         }
     }

@@ -146,6 +146,9 @@ MonoBehaviour:
   m_FireRateDelay: 2000
   m_PrefabFire: {fileID: 8113363781060653116, guid: 4a0d12f8da589b048b2fa6b20e67499d, type: 3}
   m_prefabBonus: {fileID: 7859693144308601078, guid: 23714d9489e6bfe45832858287d1603e, type: 3}
+  shot: {fileID: 8300000, guid: 642569e87996f7d4c96f35e0de4f9e22, type: 3}
+  destroy: {fileID: 8300000, guid: ed39555174b565543bcd936ecab81329, type: 3}
+  m_audio: {fileID: 2041667156, guid: 0e5a06d798356174986b124efd0f4c78, type: 3}
 --- !u!54 &3272776587556574661
 Rigidbody:
   m_ObjectHideFlags: 0

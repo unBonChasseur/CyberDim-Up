@@ -9691,6 +9691,10 @@ MonoBehaviour:
   m_PrefabFire: {fileID: 7018001257416534846, guid: f62334a38bb70c34fb25d68aac211190, type: 3}
   m_Renderer: {fileID: 2093092836532552070}
   m_LifeGauge: {fileID: 0}
+  shot: {fileID: 8300000, guid: 85f47b1703d876e49892ad3dc8433454, type: 3}
+  bonus: {fileID: 8300000, guid: daa54fb66c49aa24cb7944bbcc8b0a1f, type: 3}
+  degat: {fileID: 8300000, guid: d52c63467b43d6340961a61592042ef4, type: 3}
+  m_audio: {fileID: 0}
 --- !u!65 &6734872114689321604
 BoxCollider:
   m_ObjectHideFlags: 0

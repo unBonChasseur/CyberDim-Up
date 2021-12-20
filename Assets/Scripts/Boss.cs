@@ -7,7 +7,7 @@ using System;
 public class Boss : Entity
 {
     [SerializeField]
-    private float m_Speed = 100f;
+    private float m_Speed = 10f;
     private float m_HPCurrent;
 
     //private float ObjectifPositionZ = -1050;
@@ -30,7 +30,10 @@ public class Boss : Entity
     private GameObject m_PrefabFire;
     private Stopwatch m_StopWatchBullet;
 
-   
+    public AudioClip tir;
+    public AudioSource m_audio;
+
+
 
 
     void Awake()
@@ -59,14 +62,17 @@ public class Boss : Entity
         {
             if (GameManager.current.GetNiveau() == 1)
             {
-               
-                if(!randomBool && m_CurrentPosition.y < m_Camera.pixelHeight - m_CameraMargin)
+
+                if (!randomBool && m_CurrentPosition.y < m_Camera.pixelHeight - m_CameraMargin)
                 {
-                    transform.Translate(Vector3.up * m_Speed * Time.deltaTime);
+                    transform.position += new Vector3(0, m_Speed * Time.deltaTime, 0);
+
+
                 }
-                if(randomBool && m_CurrentPosition.y < m_Camera.pixelHeight - m_CameraMargin)
+                else if (randomBool && m_CurrentPosition.y < m_Camera.pixelHeight - m_CameraMargin)
                 {
-                    transform.Translate(Vector3.down * m_Speed * Time.deltaTime);
+                    transform.position -= new Vector3(0, m_Speed * Time.deltaTime, 0);
+
                 }
                 if (transform.position.y != -1000)
                 {
@@ -76,24 +82,25 @@ public class Boss : Entity
                         if (Mathf.Abs(transform.position.y) - 1000 < m_Speed * Time.deltaTime)
                             transform.position = new Vector3(0, -1000, -1055);
                         else
-                            transform.Translate(Vector3.up * m_Speed * Time.deltaTime);
+                            transform.position += new Vector3(0, m_Speed * Time.deltaTime, 0);
                     }
                     else if (transform.position.y > -1000)
                     {
                         if (1000 - Mathf.Abs(transform.position.y) < m_Speed * Time.deltaTime)
                             transform.position = new Vector3(0, -1000, -1055);
                         else
-                            transform.Translate(Vector3.down * m_Speed * Time.deltaTime);
+                            transform.position -= new Vector3(0, m_Speed * Time.deltaTime, 0);
                     }
+
                 }
             }
             else if (GameManager.current.GetNiveau() == 2)
             {
-               
+
             }
             else if (GameManager.current.GetNiveau() == 3)
             {
-               
+
             }
 
             
@@ -108,6 +115,7 @@ public class Boss : Entity
         {
             GameObject FireRight = Instantiate(m_PrefabFire, transform.position, new Quaternion(0, 90, 90, 1));
             m_StopWatchBullet.Restart();
+            m_audio.PlayOneShot(tir, 0.5f);
         }
 
         //if (m_CurrentPosition.y > m_DeathDist)

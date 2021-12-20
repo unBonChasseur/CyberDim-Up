@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private TMP_Text m_ScoreEndText;
 
+    public AudioClip turbine;
+    public AudioSource m_audio;
+
 
     private void Awake()
     {
@@ -86,7 +89,12 @@ public class GameManager : MonoBehaviour
     public void SetBossFighting(bool bossfighting)
     {
         if (bossfighting)
+        {
             m_Boss.SetActive(true);
+            m_audio.PlayOneShot(turbine, 1f);
+
+        }
+           
         this.m_BossFighting = bossfighting;
     }
 
