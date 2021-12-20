@@ -14,6 +14,8 @@ public class UserInterface : MonoBehaviour
     [SerializeField]
     private GameObject m_GameOverText;
     [SerializeField]
+    private GameObject m_VictoryText;
+    [SerializeField]
     private GameObject m_ScoreEndText;
     [SerializeField]
     private GameObject m_RestartButton;
@@ -41,6 +43,7 @@ public class UserInterface : MonoBehaviour
             m_LifeGauge.SetActive(false);
             m_ScoreText.SetActive(false);
 
+            m_VictoryText.SetActive(false);
             m_GameOverText.SetActive(false);
             m_ScoreEndText.SetActive(false);
             m_RestartButton.SetActive(false);
@@ -59,9 +62,20 @@ public class UserInterface : MonoBehaviour
             m_MainMenuGameObjects.SetActive(false);
             m_LifeGauge.SetActive(false);
             m_ScoreText.SetActive(false);
-
+            m_VictoryText.SetActive(false);
 
             m_GameOverText.SetActive(true);
+            m_ScoreEndText.SetActive(true);
+            m_RestartButton.SetActive(true);
+        }
+        if(GameManager.current.GetVictory() && !m_VictoryText.activeSelf)
+        {
+            m_MainMenuGameObjects.SetActive(false);
+            m_LifeGauge.SetActive(false);
+            m_ScoreText.SetActive(false);
+            m_GameOverText.SetActive(false);
+
+            m_VictoryText.SetActive(true);
             m_ScoreEndText.SetActive(true);
             m_RestartButton.SetActive(true);
         }

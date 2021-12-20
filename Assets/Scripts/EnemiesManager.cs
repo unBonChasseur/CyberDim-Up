@@ -25,7 +25,7 @@ public class EnemiesManager : MonoBehaviour
 
     private IEnumerator EnemySpawn()
     {
-        while(Application.isPlaying)
+        while(Application.isPlaying && !GameManager.current.GetBossFighting())
         {
             yield return new WaitForSeconds(m_spawnDelay);
             Vector3 spawnPos = new Vector3(0,-1000,-1075);

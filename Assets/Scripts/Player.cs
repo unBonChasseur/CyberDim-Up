@@ -206,6 +206,13 @@ public class Player : Entity
                 m_HPCurrent = m_HPMax;
                 m_LifeGauge.value = m_HPCurrent;
             }
+            if (collision.gameObject.tag == "Boss")
+            {
+                GameManager.current.AddScore(-20);
+                m_HPCurrent -= 10;
+                GameManager.current.SetGameOver(true);
+                Destroy(gameObject);
+            }
         }
     }
 
