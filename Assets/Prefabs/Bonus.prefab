@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4244015600228476314}
   m_Layer: 0
   m_Name: Bonus
-  m_TagString: Untagged
+  m_TagString: Bonus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,5 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea4b56b9fa218d43866cd30c5d1af01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vitesse: 10
+  m_movementSpeed: 4
   m_mainCamera: {fileID: 8356112162039983046, guid: 060bb9ff20c4c854685990ea0e03881e, type: 3}
+  m_maxRange: 1075

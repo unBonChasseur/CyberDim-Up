@@ -70,10 +70,11 @@ public class Enemy : Entity
             }
             else
             {
-                //if (Random.Range(0, 1) < 0.5f)
-                //{
-                    //GameObject Bonus = Instantiate(m_prefabBonus, transform.position, new Quaternion(0, 90, 90, 1));
-                //}
+                if (Random.Range(0f, 10f) < 1f)
+                {
+                    GameObject Bonus = Instantiate(m_prefabBonus, transform.position, new Quaternion(0, 90, 90, 1));
+                }
+
                 Destroy(gameObject);
             }
         }

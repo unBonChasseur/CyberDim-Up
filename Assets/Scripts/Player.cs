@@ -170,16 +170,16 @@ public class Player : Entity
     {
         if (collision.gameObject.tag != "Bullet")
         {
-            StartCoroutine(ClignotementDegats());
 
             if (collision.gameObject.tag == "Enemy")
             {
+                StartCoroutine(ClignotementDegats());
                 GameManager.current.AddScore(-10);
-                if (m_HPCurrent != 0)
-                {
-                    m_HPCurrent -= 5;
+                m_HPCurrent -= 5;
+
+                if (m_HPCurrent > 0)
                     m_LifeGauge.value = m_HPCurrent;
-                }
+
                 else
                 {
                     GameManager.current.SetGameOver(true);
@@ -188,17 +188,23 @@ public class Player : Entity
             }
             if (collision.gameObject.tag == "Bullet_enemy")
             {
+                StartCoroutine(ClignotementDegats());
                 GameManager.current.AddScore(-2);
-                if (m_HPCurrent != 0)
-                {
-                    m_HPCurrent -= 1;
+                m_HPCurrent -= 1;
+                if (m_HPCurrent > 0)
                     m_LifeGauge.value = m_HPCurrent;
-                }
                 else
                 {
                     GameManager.current.SetGameOver(true);
                     Destroy(gameObject);
                 }
+            }
+            if (collision.gameObject.tag == "Bonus")
+            {
+                StartCoroutine(ClignotementBonus());
+                GameManager.current.AddScore(4);
+                m_HPCurrent = m_HPMax;
+                m_LifeGauge.value = m_HPCurrent;
             }
         }
     }
@@ -206,7 +212,7 @@ public class Player : Entity
 
     private IEnumerator ClignotementDegats()
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 3; i++)
         {
             yield return new WaitForSeconds(0.3f);
             m_Renderer.material.color = Color.red;
@@ -215,6 +221,16 @@ public class Player : Entity
         }
     }
 
+    private IEnumerator ClignotementBonus()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            yield return new WaitForSeconds(0.3f);
+            m_Renderer.material.color = Color.green;
+            yield return new WaitForSeconds(0.3f);
+            m_Renderer.material.color = Color.white;
+        }
+    }
 }
 
 

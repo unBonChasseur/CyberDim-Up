@@ -9,7 +9,7 @@ public class EnemiesManager : MonoBehaviour
 
     [SerializeField]
     private float m_spawnDelay = 2f;
-   
+    
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class EnemiesManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
-               
+        
     }
 
     private IEnumerator EnemySpawn()
@@ -48,7 +48,6 @@ public class EnemiesManager : MonoBehaviour
                 GameObject enemy = Instantiate(m_prefabEnemy, spawnPos, new Quaternion(0, 0, 90, 1));
 
             }
-           
         }
        
     }

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager current = null;
     private int m_Level = 0;
     private bool m_GameOver = false;
+    private bool m_BossFighting = false;
 
     [Header("Score")]
     private int m_Score;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     private TMP_Text m_ScoreText;
     [SerializeField]
     private TMP_Text m_ScoreEndText;
+
 
     private void Awake()
     {
@@ -41,7 +43,12 @@ public class GameManager : MonoBehaviour
     }
     public void AddScore(int score)
     {
-        m_Score += score;
+        if (score < 0 && m_Score < Mathf.Abs(score))
+        {
+            m_Score = 0;
+        }
+        else
+            m_Score += score;
         m_ScoreText.text = "Score:" + m_Score;
         m_ScoreEndText.text = "Your score:" + m_Score;
     }
@@ -64,6 +71,16 @@ public class GameManager : MonoBehaviour
     public bool GetGameOver()
     {
         return this.m_GameOver;
+    }
+
+    public void SetBossFighting(bool bossfighting)
+    {
+        this.m_BossFighting = bossfighting;
+    }
+
+    public bool GetBossFighting()
+    {
+        return this.m_BossFighting;
     }
 
     public void ExitGame()

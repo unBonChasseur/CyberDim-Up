@@ -42,6 +42,10 @@ public class Bullet : MonoBehaviour
         {
             GameManager.current.AddScore(2);
         }
-
+        if (collision.gameObject.tag == "Boss")
+        {
+            GameManager.current.AddScore(20);
+            Destroy(gameObject);
+        }
     }
 }
