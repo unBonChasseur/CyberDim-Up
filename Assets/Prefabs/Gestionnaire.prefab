@@ -43,5 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74433fec5321da74ab926da19dbd14db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Boss: {fileID: 8058531187550231462, guid: 746b08ae77f1a5449ab295bd97e58833, type: 3}
   m_ScoreText: {fileID: 6262628689657655916, guid: 9491aaa80455f4d48b43459086a249ee, type: 3}
   m_ScoreEndText: {fileID: 7389660008072508853, guid: 12936ee4d18cb83459b10f0ad007f1fb, type: 3}

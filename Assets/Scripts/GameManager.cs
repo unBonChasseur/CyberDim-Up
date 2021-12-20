@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_Score >= 2000 * m_Level && m_Level != 0)
+        if (m_Score >= 100 * m_Level && m_Level != 0)
             m_BossFighting = true;
     }
 
