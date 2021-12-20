@@ -2,12 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager current = null;
     private int m_Level = 0;
     private bool m_GameOver = false;
+
+    [Header("Score")]
+    private int m_Score;
+    [SerializeField]
+    private TMP_Text m_ScoreText;
+    [SerializeField]
+    private TMP_Text m_ScoreEndText;
 
     private void Awake()
     {
@@ -22,13 +30,20 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_Score = 0;
+        AddScore(0);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    public void AddScore(int score)
+    {
+        m_Score += score;
+        m_ScoreText.text = "Score:" + m_Score;
+        m_ScoreEndText.text = "Your score:" + m_Score;
     }
 
     public void SetNiveau(int niveau)

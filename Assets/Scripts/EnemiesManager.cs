@@ -9,23 +9,21 @@ public class EnemiesManager : MonoBehaviour
 
     [SerializeField]
     private float m_spawnDelay = 2f;
-
    
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(EnnemySpawn());
+        StartCoroutine(EnemySpawn());
     }
 
     // Update is called once per frame
     void Update()
     { 
                
-
     }
 
-    private IEnumerator EnnemySpawn()
+    private IEnumerator EnemySpawn()
     {
         while(Application.isPlaying)
         {

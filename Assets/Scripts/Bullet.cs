@@ -14,8 +14,6 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private float m_maxRange = 1075;
 
-    public static event Action OnHit;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -37,13 +35,13 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            //if(collision.gameObject.GetComponent<Enemy>(hp_max))
-            OnHit();
+            GameManager.current.AddScore(10);
             Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Bullet_enemy")
         {
-            Destroy(gameObject);
+            GameManager.current.AddScore(2);
         }
+
     }
 }

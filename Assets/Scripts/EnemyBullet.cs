@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet_enemy : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     [SerializeField]
     private float m_movementSpeed;
@@ -11,7 +11,7 @@ public class Bullet_enemy : MonoBehaviour
     private Camera m_mainCamera;
 
     [SerializeField]
-    private float m_maxRange;
+    private float m_DeathDist;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class Bullet_enemy : MonoBehaviour
     {
         transform.position += new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
 
-        if (transform.position.z >= m_maxRange)
+        if (transform.position.z >= m_DeathDist)
         {
             Destroy(gameObject, 0);
         }

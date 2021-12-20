@@ -6,23 +6,22 @@ using UnityEngine;
 public class Enemy : Entity
 {
     [SerializeField]
-    private float vitesse = 20f;
-    private int hp_max;
-    private int currenthp_enemy;
+    private float m_Speed = 2f;
+    [SerializeField]
+    private float m_DeathDist = 450f;
+    private float m_HPCurrent;
 
     [SerializeField]
-    private Camera m_mainCamera;
-    private Vector3 m_currentPosition;
+    private Camera m_MainCamera;
+    private Vector3 m_CurrentPosition;
 
-    [SerializeField]
-    private float m_deathDist;
 
     [Header("Bullet")]
     [SerializeField]
-    private float m_fireRateDelay;
+    private float m_FireRateDelay = 2000f;
     [SerializeField]
     private GameObject m_PrefabFire;
-    private Stopwatch m_FireStopWatch;
+    private Stopwatch m_StopWatchBullet;
 
     [Header("Bonus")]
     [SerializeField]
@@ -30,33 +29,32 @@ public class Enemy : Entity
 
     void Awake()
     {
-        m_FireStopWatch = new Stopwatch();
-        m_FireStopWatch.Start();
-        current_hp = 4;
+        m_StopWatchBullet = new Stopwatch();
+        m_StopWatchBullet.Start();
     }
     // Start is called before the first frame update
     void Start()
     {
-        hp_max = current_hp;
-        currenthp_enemy = current_hp;
+        m_HPCurrent = m_HPMax;
     }
 
     // Update is called once per frame
     void Update()
     {
-        m_currentPosition = m_mainCamera.WorldToScreenPoint(transform.position);
+        m_CurrentPosition = m_MainCamera.WorldToScreenPoint(transform.position);
 
-        transform.position += new Vector3(0,0, vitesse * Time.deltaTime);
+        transform.position += new Vector3(0,0, m_Speed * Time.deltaTime);
 
-        if (m_FireStopWatch.ElapsedMilliseconds >= m_fireRateDelay)
+        if (m_StopWatchBullet.ElapsedMilliseconds >= m_FireRateDelay)
         {
             GameObject FireRight = Instantiate(m_PrefabFire, transform.position, new Quaternion(0, 90, 90, 1));
-            m_FireStopWatch.Restart();
+            m_StopWatchBullet.Restart();
         }
 
-        if (m_currentPosition.y > m_deathDist)
+        if (m_CurrentPosition.y > m_DeathDist)
             Destroy(gameObject);
     }
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -65,21 +63,18 @@ public class Enemy : Entity
         }
         if (collision.gameObject.tag == "Bullet")
         {
-            for (float i = hp_max; i > 0; i--)
+            
+            if (m_HPCurrent != 0)
             {
-                if (currenthp_enemy!= 0)
-                {
-                    currenthp_enemy -= 1;
-                }
-                else
-                {
-                    //if (Random.Range(0, 1) < 0.5f)
-                    //{
-                        //GameObject Bonus = Instantiate(m_prefabBonus, transform.position, new Quaternion(0, 90, 90, 1));
-                    //}
-                    Destroy(gameObject);
-                }
-
+                m_HPCurrent -= 5.0f;
+            }
+            else
+            {
+                //if (Random.Range(0, 1) < 0.5f)
+                //{
+                    //GameObject Bonus = Instantiate(m_prefabBonus, transform.position, new Quaternion(0, 90, 90, 1));
+                //}
+                Destroy(gameObject);
             }
         }
     }

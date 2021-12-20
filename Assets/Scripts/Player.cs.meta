@@ -3,7 +3,11 @@ guid: 217d1f0743c0504418b12bebd2d1d773
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_Camera: {fileID: 8356112162039983046, guid: 060bb9ff20c4c854685990ea0e03881e, type: 3}
+  - m_PrefabFire: {fileID: 7018001257416534846, guid: f62334a38bb70c34fb25d68aac211190, type: 3}
+  - m_Renderer: {instanceID: 0}
+  - m_LifeGauge: {fileID: 166859503776299502, guid: ef5eeef70295ff64dad810988709679b, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

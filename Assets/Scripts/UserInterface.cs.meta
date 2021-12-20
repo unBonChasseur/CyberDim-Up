@@ -3,7 +3,13 @@ guid: 6b878cf9ce8461746ae77fb8abdd786f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_MainMenuGameObjects: {fileID: 1739782169676931026, guid: d41db07e456eb57419a85a5913a14c48, type: 3}
+  - m_GameOverText: {fileID: 1934587320125813266, guid: 3b9b320ad8be3c94b91fd0eb7cbd09d1, type: 3}
+  - m_ScoreEndText: {fileID: 623755032853364038, guid: 12936ee4d18cb83459b10f0ad007f1fb, type: 3}
+  - m_RestartButton: {fileID: 2814899572614836415, guid: 424d468439b10ce4e9275e46f9a7f9a1, type: 3}
+  - m_ScoreText: {fileID: 6262628689657655917, guid: 9491aaa80455f4d48b43459086a249ee, type: 3}
+  - m_LifeGauge: {fileID: 166859503776299503, guid: ef5eeef70295ff64dad810988709679b, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -1,249 +1,219 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Diagnostics;
 using System;
 
 public class Player : Entity
 {
-
     [Header("Movements")]
     [SerializeField]
-    private float m_movementSpeed;
+    private float m_MovementSpeed;
     [SerializeField]
-    private float m_smooth;
+    private float m_MovementSmooth;
     [SerializeField]
-    private float m_tiltAngle;
+    private float m_MovementRotationAngle;
 
     [Header("Camera")]
     [SerializeField]
     private GameObject[] m_Cinemachines;
-    private int m_NbCinemachines;
-    private Stopwatch m_CamStopWatch;
+    private int m_CinemachinesNb;
+    private Stopwatch m_StopWatchCamera;
 
     [SerializeField]
-    private Camera m_mainCamera;
+    private Camera m_Camera;
     [SerializeField]
-    private float m_marginCamera;
+    private float m_CameraMargin;
     [SerializeField]
-    private float m_camTransitionTime;
-    private Vector3 m_currentPosition;
+    private float m_CameraTransitionTime;
+    private Vector3 m_CurrentPosition;
 
     [Header("Bullet")]
     [SerializeField]
-    private float m_fireRateDelay;
+    private float m_BulletDelay;
     [SerializeField]
     private GameObject m_PrefabFire;
-    private Stopwatch m_FireStopWatch;
+    private Stopwatch m_StopWatchBullets;
 
-    private float m_score;
+    public MeshRenderer m_Renderer;
 
-    private int m_HpMax;
     [SerializeField]
-    private int currenthp_player;
-
-    public MeshRenderer rendu;
-
-    public healthbar Life_Jauge;
-
-    
+    public Slider m_LifeGauge;
+    private float m_HPCurrent;
 
     void Awake()
     {
-        m_CamStopWatch = new Stopwatch();
-        m_CamStopWatch.Start();
+        m_StopWatchCamera = new Stopwatch();
+        m_StopWatchCamera.Start();
 
-        m_FireStopWatch = new Stopwatch();
-        m_FireStopWatch.Start();
-        current_hp = 10;
+        m_StopWatchBullets = new Stopwatch();
+        m_StopWatchBullets.Start();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-       
-        m_NbCinemachines = m_Cinemachines.Length;
-        m_camTransitionTime = 2000;
-        m_HpMax = current_hp;
-        currenthp_player = current_hp;
-        Life_Jauge.SetMaxHp(m_HpMax);
-        m_score = 0;
+        m_CinemachinesNb = m_Cinemachines.Length;
+        m_CameraTransitionTime = 2000;
+        m_HPCurrent = m_HPMax;
+
+        m_LifeGauge.value = m_HPMax;
     }
 
     // Update is called once per frame
     void Update()
     {
-        m_currentPosition = m_mainCamera.WorldToScreenPoint(transform.position);
-        
+        m_CurrentPosition = m_Camera.WorldToScreenPoint(transform.position);
+
 
         // Changement de caméra en fonction du niveau sélectionné
-        if (!m_Cinemachines[GameManager.current.GetNiveau() % m_NbCinemachines].activeSelf)
+        if (!m_Cinemachines[GameManager.current.GetNiveau() % m_CinemachinesNb].activeSelf)
         {
-            for (int i = 0; i < m_NbCinemachines; i++)
+            for (int i = 0; i < m_CinemachinesNb; i++)
                 m_Cinemachines[i].SetActive(false);
 
             transform.position = new Vector3(0, -1000, -1000);
-            m_Cinemachines[GameManager.current.GetNiveau() % m_NbCinemachines].SetActive(true);
+            m_Cinemachines[GameManager.current.GetNiveau() % m_CinemachinesNb].SetActive(true);
 
-            m_CamStopWatch.Restart();
+            m_StopWatchCamera.Restart();
         }
 
-        if (m_CamStopWatch.ElapsedMilliseconds >= m_camTransitionTime)
+        if (m_StopWatchCamera.ElapsedMilliseconds >= m_CameraTransitionTime)
         {
-            if (GameManager.current.GetNiveau() % m_NbCinemachines == 1)
+            if (GameManager.current.GetNiveau() % m_CinemachinesNb == 1)
             {
 
                 // Gestion des déplacements
-                if (Input.GetKey(KeyCode.UpArrow) && m_currentPosition.y < m_mainCamera.pixelHeight - m_marginCamera)
-                    StartCoroutine(Up());
+                if (Input.GetKey(KeyCode.UpArrow) && m_CurrentPosition.y < m_Camera.pixelHeight - m_CameraMargin)
+                    transform.position += new Vector3(0, m_MovementSpeed * Time.deltaTime, 0);
 
-                if (Input.GetKey(KeyCode.DownArrow) && m_currentPosition.y > m_marginCamera)
-                    StartCoroutine(Down());
+                if (Input.GetKey(KeyCode.DownArrow) && m_CurrentPosition.y > m_CameraMargin)
+                    transform.position -= new Vector3(0, m_MovementSpeed * Time.deltaTime, 0);
+
+                if (!Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow) && transform.position.y != -1000)
+                {
+                    // si le vaisseau est vers le bas
+                    if(transform.position.y < -1000)
+                    {
+                        if (Mathf.Abs(transform.position.y) - 1000 < m_MovementSpeed * Time.deltaTime)
+                            transform.position = new Vector3(0, -1000, -1000);
+                        else
+                            transform.position += new Vector3(0, m_MovementSpeed * Time.deltaTime, 0);
+                        
+                    }
+                    else if (transform.position.y > -1000)
+                    {
+                        if (1000 - Mathf.Abs(transform.position.y) < m_MovementSpeed * Time.deltaTime)
+                            transform.position = new Vector3(0, -1000, -1000);
+                        else
+                            transform.position -= new Vector3(0, m_MovementSpeed * Time.deltaTime, 0);
+                    }
+                }
 
             }
-            else if (GameManager.current.GetNiveau() % m_NbCinemachines == 2)
+            else if (GameManager.current.GetNiveau() % m_CinemachinesNb == 2)
             {
                 // Gestion des déplacements
-                if (Input.GetKey(KeyCode.LeftArrow) && m_currentPosition.x > m_marginCamera)
-                    transform.position += new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
+                if (Input.GetKey(KeyCode.LeftArrow) && m_CurrentPosition.x > m_CameraMargin)
+                    transform.position += new Vector3(m_MovementSpeed * Time.deltaTime, 0, 0);
 
-                if (Input.GetKey(KeyCode.RightArrow) && m_currentPosition.x < m_mainCamera.pixelWidth - m_marginCamera)
-                    transform.position -= new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
+                if (Input.GetKey(KeyCode.RightArrow) && m_CurrentPosition.x < m_Camera.pixelWidth - m_CameraMargin)
+                    transform.position -= new Vector3(m_MovementSpeed * Time.deltaTime, 0, 0);
 
-                if (Input.GetKey(KeyCode.DownArrow) && m_currentPosition.y > m_marginCamera)
-                    transform.position += new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
+                if (Input.GetKey(KeyCode.DownArrow) && m_CurrentPosition.y > m_CameraMargin)
+                    transform.position += new Vector3(0, 0, m_MovementSpeed * Time.deltaTime);
 
-                if (Input.GetKey(KeyCode.UpArrow) && m_currentPosition.y < m_mainCamera.pixelHeight - m_marginCamera)
-                    transform.position -= new Vector3(0, 0, m_movementSpeed * Time.deltaTime);
+                if (Input.GetKey(KeyCode.UpArrow) && m_CurrentPosition.y < m_Camera.pixelHeight - m_CameraMargin)
+                    transform.position -= new Vector3(0, 0, m_MovementSpeed * Time.deltaTime);
 
             }
-            else if (GameManager.current.GetNiveau() % m_NbCinemachines == 3)
+            else if (GameManager.current.GetNiveau() % m_CinemachinesNb == 3)
             {
                 // Gestion des Rotations
-                float tiltAroundZ = Input.GetAxis("Horizontal") * -m_tiltAngle;
-                float tiltAroundX = Input.GetAxis("Vertical") * -m_tiltAngle;
+                float tiltAroundZ = Input.GetAxis("Horizontal") * -m_MovementRotationAngle;
+                float tiltAroundX = Input.GetAxis("Vertical") * -m_MovementRotationAngle;
 
                 Quaternion target = Quaternion.Euler(tiltAroundX, 0, tiltAroundZ);
 
-                transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * m_smooth);
+                transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * m_MovementSmooth);
 
                 // Gestion des déplacements
-                if (Input.GetKey(KeyCode.LeftArrow) && m_currentPosition.x > m_marginCamera)
-                    transform.position += new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
+                if (Input.GetKey(KeyCode.LeftArrow) && m_CurrentPosition.x > m_CameraMargin)
+                    transform.position += new Vector3(m_MovementSpeed * Time.deltaTime, 0, 0);
 
-                if (Input.GetKey(KeyCode.RightArrow) && m_currentPosition.x < m_mainCamera.pixelWidth - m_marginCamera)
-                    transform.position -= new Vector3(m_movementSpeed * Time.deltaTime, 0, 0);
+                if (Input.GetKey(KeyCode.RightArrow) && m_CurrentPosition.x < m_Camera.pixelWidth - m_CameraMargin)
+                    transform.position -= new Vector3(m_MovementSpeed * Time.deltaTime, 0, 0);
 
-                if (Input.GetKey(KeyCode.UpArrow) && m_currentPosition.y < m_mainCamera.pixelHeight - m_marginCamera)
-                    transform.position += new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
+                if (Input.GetKey(KeyCode.UpArrow) && m_CurrentPosition.y < m_Camera.pixelHeight - m_CameraMargin)
+                    transform.position += new Vector3(0, m_MovementSpeed * Time.deltaTime, 0);
 
-                if (Input.GetKey(KeyCode.DownArrow) && m_currentPosition.y > m_marginCamera)
-                    transform.position -= new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
+                if (Input.GetKey(KeyCode.DownArrow) && m_CurrentPosition.y > m_CameraMargin)
+                    transform.position -= new Vector3(0, m_MovementSpeed * Time.deltaTime, 0);
 
             }
 
-            if (Input.GetKey(KeyCode.Space) && GameManager.current.GetNiveau() % m_NbCinemachines != 0)
+            if (Input.GetKey(KeyCode.Space) && GameManager.current.GetNiveau() % m_CinemachinesNb != 0)
             {
-                if (m_FireStopWatch.ElapsedMilliseconds >= m_fireRateDelay)
+                if (m_StopWatchBullets.ElapsedMilliseconds >= m_BulletDelay)
                 {
                     // On créé les tirs pour qu'ils partent exactement des canons
                     GameObject FireLeft = Instantiate(m_PrefabFire, transform.position + new Vector3(-0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
                     GameObject FireRight = Instantiate(m_PrefabFire, transform.position + new Vector3(0.305f, 0.08f, -3.6f), new Quaternion(0, 90, 90, 1));
-                    Bullet.OnHit += OnBulletHit;
-                    m_FireStopWatch.Restart();
+                    m_StopWatchBullets.Restart();
                 }
             }
         }
     }
-    private IEnumerator Up()
-    {
-       
-        transform.position += new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
-        yield return new WaitForSeconds(0.3f);
-       transform.position -= new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
-    }
-    private IEnumerator Down()
-    {
-        
-        transform.position -= new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
-        yield return new WaitForSeconds(0.3f);
-        transform.position += new Vector3(0, m_movementSpeed * Time.deltaTime, 0);
-    }
-
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag != "Bullet")
+        if (collision.gameObject.tag != "Bullet")
         {
             StartCoroutine(ClignotementDegats());
 
             if (collision.gameObject.tag == "Enemy")
             {
-
-                for (float i = m_HpMax; i > 0; i--)
+                GameManager.current.AddScore(-10);
+                if (m_HPCurrent != 0)
                 {
-                    if (currenthp_player != 0)
-                    {
-                        currenthp_player -= 5;
-                        Life_Jauge.SetHp(currenthp_player);
-
-                    }
-                    else
-                    {
-                        GameManager.current.SetGameOver(true);
-                        Destroy(gameObject);
-                    }
-                    
-
+                    m_HPCurrent -= 5;
+                    m_LifeGauge.value = m_HPCurrent;
                 }
-
-
+                else
+                {
+                    GameManager.current.SetGameOver(true);
+                    Destroy(gameObject);
+                }
             }
             if (collision.gameObject.tag == "Bullet_enemy")
             {
-
-                for (float i = m_HpMax; i > 0; i--)
+                GameManager.current.AddScore(-2);
+                if (m_HPCurrent != 0)
                 {
-                    if (currenthp_player != 0 )
-                    {
-                        currenthp_player -= 1;
-                        Life_Jauge.SetHp(currenthp_player);
-
-                    }
-                    else
-                    {
-                        GameManager.current.SetGameOver(true);
-                        Destroy(gameObject);
-                    }
-                    
-
+                    m_HPCurrent -= 1;
+                    m_LifeGauge.value = m_HPCurrent;
                 }
-
+                else
+                {
+                    GameManager.current.SetGameOver(true);
+                    Destroy(gameObject);
+                }
             }
-            
         }
-       
     }
- 
+
 
     private IEnumerator ClignotementDegats()
     {
-        for(int i=0;i<6;i++)
+        for (int i = 0; i < 6; i++)
         {
             yield return new WaitForSeconds(0.3f);
-            rendu.material.color = Color.red;
+            m_Renderer.material.color = Color.red;
             yield return new WaitForSeconds(0.3f);
-            rendu.material.color = Color.white;
-
+            m_Renderer.material.color = Color.white;
         }
     }
-   
-
-    void OnBulletHit()
-    {
-        m_score += 1;
-    }
-
 
 }
 

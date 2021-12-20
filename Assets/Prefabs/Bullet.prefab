@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_movementSpeed: 50
-  m_mainCamera: {fileID: 9161623765417786528, guid: 060bb9ff20c4c854685990ea0e03881e, type: 3}
+  m_mainCamera: {fileID: 8356112162039983046, guid: 060bb9ff20c4c854685990ea0e03881e, type: 3}
   m_maxRange: 1075
 --- !u!65 &4103767632796664221
 BoxCollider:

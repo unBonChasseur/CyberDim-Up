@@ -38,7 +38,6 @@ public class UserInterface : MonoBehaviour
     {
         if(GameManager.current.GetNiveau() == 0 && !m_MainMenuGameObjects.activeSelf)
         {
-            Debug.Log("1");
             m_LifeGauge.SetActive(false);
             m_ScoreText.SetActive(false);
 
@@ -50,18 +49,13 @@ public class UserInterface : MonoBehaviour
         }
         if(GameManager.current.GetNiveau() >= 1 && m_MainMenuGameObjects.activeSelf)
         {
-            Debug.Log("2");
-
             m_MainMenuGameObjects.SetActive(false);
 
             m_LifeGauge.SetActive(true);
             m_ScoreText.SetActive(true);
-
-
         }
         if (GameManager.current.GetGameOver() && !m_GameOverText.activeSelf)
         {
-            Debug.Log("3");
             m_MainMenuGameObjects.SetActive(false);
             m_LifeGauge.SetActive(false);
             m_ScoreText.SetActive(false);

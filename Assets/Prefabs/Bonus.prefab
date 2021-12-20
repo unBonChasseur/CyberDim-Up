@@ -108,6 +108,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea4b56b9fa218d43866cd30c5d1af01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP_max: 10
   vitesse: 10
-  m_mainCamera: {fileID: 0}
+  m_mainCamera: {fileID: 8356112162039983046, guid: 060bb9ff20c4c854685990ea0e03881e, type: 3}
