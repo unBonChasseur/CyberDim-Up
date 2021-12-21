@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Bullet
+  - Bullet_enemy
+  - Bonus
+  - Boss
   layers:
   - Default
   - TransparentFX
