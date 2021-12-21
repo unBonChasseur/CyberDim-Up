@@ -7,7 +7,6 @@ using System;
 public class Boss : Entity
 {
     [SerializeField]
-    private float m_Speed = 10f;
     private float m_HPCurrent;
 
     //private float ObjectifPositionZ = -1050;
@@ -19,8 +18,14 @@ public class Boss : Entity
     private Camera m_Camera;
     [SerializeField]
     private float m_CameraMargin;
-   
-    private Vector3 m_CurrentPosition;
+
+    private float useSpeed;
+    public float directionSpeed = 9.0f;
+    float origY;
+    private float origZ;
+    public float distance = 10.0f;
+    private bool Charge = false;
+
 
 
     [Header("Bullet")]
@@ -33,8 +38,8 @@ public class Boss : Entity
     public AudioClip tir;
     public AudioSource m_audio;
 
-
-
+ 
+    
 
     void Awake()
     {
@@ -48,13 +53,17 @@ public class Boss : Entity
     void Start()
     {
         m_HPCurrent = m_HPMax;
+        origY = transform.position.y;  // Y = de haut en bas  
+        useSpeed = -directionSpeed;
+        origZ = transform.position.z;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        var random = new System.Random();
-        var randomBool = random.Next(2) == 1;
+        
+
         // Il faudrait faire des déplacements aléatoire pour le boss un peu comme dans le script du player. 
         // pour les tirs du Boss, tu peux recalibrer a la main l'endroit dôù le boss tire ou bien juste lui faire spawner des rangées d'ennemis devant lui pour qu'il soit dangeureux.
         // Je ne pense pas pouvoir me rendre dispo sur le reste de mon voyage a strasbourg, mais si t'as des questions hésite pas ! 
@@ -62,37 +71,37 @@ public class Boss : Entity
         {
             if (GameManager.current.GetNiveau() == 1)
             {
-
-                if (!randomBool && m_CurrentPosition.y < m_Camera.pixelHeight - m_CameraMargin)
+                if(Charge==false)
                 {
-                    transform.position += new Vector3(0, m_Speed * Time.deltaTime, 0);
-
-
-                }
-                else if (randomBool && m_CurrentPosition.y < m_Camera.pixelHeight - m_CameraMargin)
-                {
-                    transform.position -= new Vector3(0, m_Speed * Time.deltaTime, 0);
-
-                }
-                if (transform.position.y != -1000)
-                {
-                    // si le Boss est vers le bas
-                    if (transform.position.y < -1000)
+                    if (origY - transform.position.y > distance) //Si la position est supérieur
                     {
-                        if (Mathf.Abs(transform.position.y) - 1000 < m_Speed * Time.deltaTime)
-                            transform.position = new Vector3(0, -1000, -1055);
-                        else
-                            transform.position += new Vector3(0, m_Speed * Time.deltaTime, 0);
+                        useSpeed = directionSpeed; //flip direction
                     }
-                    else if (transform.position.y > -1000)
+                    else if (origY - transform.position.y < -distance) // Si la position est inferieur 
                     {
-                        if (1000 - Mathf.Abs(transform.position.y) < m_Speed * Time.deltaTime)
-                            transform.position = new Vector3(0, -1000, -1055);
-                        else
-                            transform.position -= new Vector3(0, m_Speed * Time.deltaTime, 0);
+                        useSpeed = -directionSpeed; //flip direction
                     }
-
+                    transform.Translate(0, useSpeed * Time.deltaTime, 0);
                 }
+                if (m_HPCurrent == m_HPCurrent % 5 && m_HPCurrent != 0 && m_HPCurrent!=m_HPMax) 
+                {
+                    Charge = true;
+                    if (Charge==true)
+                    {
+                       
+                        if (origZ - transform.position.z > distance) //Si la position est supérieur
+                        {
+                            useSpeed = directionSpeed; //flip direction
+                        }
+                        else if (origY - transform.position.z < -distance) // Si la position est inferieur 
+                        {
+                            useSpeed = -directionSpeed; //flip direction
+                        }
+                        transform.Translate(0, 0, useSpeed * Time.deltaTime);
+                    }
+                   
+                }
+               
             }
             else if (GameManager.current.GetNiveau() == 2)
             {
@@ -117,7 +126,7 @@ public class Boss : Entity
             m_StopWatchBullet.Restart();
             m_audio.PlayOneShot(tir, 0.5f);
         }
-
+        
         //if (m_CurrentPosition.y > m_DeathDist)
         //    Destroy(gameObject);
     }

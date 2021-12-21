@@ -46,6 +46,7 @@ public class EnemiesManager : MonoBehaviour
                 }
 
                 GameObject enemy = Instantiate(m_prefabEnemy, spawnPos, new Quaternion(0, 0, 90, 1));
+               
 
             }
         }
