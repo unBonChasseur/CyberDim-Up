@@ -23,6 +23,11 @@ public class UserInterface : MonoBehaviour
     private GameObject m_ScoreText;
     [SerializeField]
     private GameObject m_LifeGauge;
+    [SerializeField]
+    private GameObject m_PauseText;
+    [SerializeField]
+    private GameObject m_instructions;
+   
 
     private void Awake()
     {
@@ -54,8 +59,10 @@ public class UserInterface : MonoBehaviour
         {
             m_MainMenuGameObjects.SetActive(false);
 
+
             m_LifeGauge.SetActive(true);
             m_ScoreText.SetActive(true);
+            m_instructions.SetActive(true);
         }
         if (GameManager.current.GetGameOver() && !m_GameOverText.activeSelf)
         {
@@ -78,6 +85,27 @@ public class UserInterface : MonoBehaviour
             m_VictoryText.SetActive(true);
             m_ScoreEndText.SetActive(true);
             m_RestartButton.SetActive(true);
+        }
+        if (GameManager.current.IsPaused() && GameManager.current.GetNiveau() >= 1 && !m_MainMenuGameObjects.activeSelf && !m_GameOverText.activeSelf && !m_VictoryText.activeSelf)
+        {
+            m_LifeGauge.SetActive(false);
+            m_ScoreText.SetActive(false);
+            m_instructions.SetActive(false);
+
+            m_PauseText.SetActive(true);
+            m_RestartButton.SetActive(true);
+           
+           
+        }
+        if(!GameManager.current.IsPaused() && GameManager.current.GetNiveau() >= 1 && !m_MainMenuGameObjects.activeSelf && !m_GameOverText.activeSelf && !m_VictoryText.activeSelf)
+        {
+            m_LifeGauge.SetActive(true);
+            m_ScoreText.SetActive(true);
+            m_instructions.SetActive(true);
+
+            m_PauseText.SetActive(false);
+            m_RestartButton.SetActive(false);
+           
         }
     }
    

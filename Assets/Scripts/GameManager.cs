@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         if (m_Score >= 100 * m_Level && m_Level != 0)
             m_BossFighting = true;
 
-        if (Input.GetKeyDown(KeyCode.Escape) && m_Level != 0)
+        if (Input.GetKeyDown(KeyCode.Escape) && m_Level != 0 && !current.GetVictory() && !current.GetGameOver())
         {
             m_GameIsPaused = !m_GameIsPaused;
             Time.timeScale = m_GameIsPaused ? 0f : 1f;
