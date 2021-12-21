@@ -16,9 +16,12 @@ public class Boss : Entity
 
     private float useSpeed;
     public float directionSpeed = 9.0f;
-    float origY;
+    private float origY;
     private float origZ;
-    public float distance = 10.0f;
+    private float origX;
+    public float distancey = 14.2f;
+    public float distancez = 55f;
+    public float distancex = 10f;
     private bool Charge = false;
 
 
@@ -51,6 +54,7 @@ public class Boss : Entity
         origY = transform.position.y;  // Y = de haut en bas  
         useSpeed = -directionSpeed;
         origZ = transform.position.z;
+        origX = transform.position.x;
        
     }
 
@@ -63,11 +67,11 @@ public class Boss : Entity
             {
                 if(Charge==false)
                 {
-                    if (origY - transform.position.y > distance) //Si la position est supérieur
+                    if (origY - transform.position.y > distancey) //Si la position est supérieur
                     {
                         useSpeed = directionSpeed; //flip direction
                     }
-                    else if (origY - transform.position.y < -distance) // Si la position est inferieur 
+                    else if (origY - transform.position.y < -distancey) // Si la position est inferieur 
                     {
                         useSpeed = -directionSpeed; //flip direction
                     }
@@ -79,15 +83,15 @@ public class Boss : Entity
                     if (Charge==true)
                     {
                        
-                        if (origZ - transform.position.z > distance) //Si la position est supérieur
-                        {
-                            useSpeed = directionSpeed; //flip direction
-                        }
-                        else if (origY - transform.position.z < -distance) // Si la position est inferieur 
+                        if (origZ - transform.position.z > distancez/2) //Si la position est supérieur
                         {
                             useSpeed = -directionSpeed; //flip direction
                         }
-                        transform.Translate(0, 0, useSpeed * Time.deltaTime);
+                        else if (origZ - transform.position.z < -distancez) // Si la position est inferieur 
+                        {
+                            useSpeed = directionSpeed; //flip direction
+                        }
+                        transform.Translate(0, 0, -useSpeed * Time.deltaTime);
                     }
                    
                 }
@@ -95,10 +99,69 @@ public class Boss : Entity
             }
             else if (GameManager.current.GetNiveau() == 2)
             {
+                if (Charge == false)
+                {
+                    if (origX - transform.position.x > distancex) //Si la position est supérieur
+                    {
+                        useSpeed = directionSpeed; //flip direction
+                    }
+                    else if (origX - transform.position.x < distancex) // Si la position est inferieur 
+                    {
+                        useSpeed = -directionSpeed; //flip direction
+                    }
+                    transform.Translate(useSpeed * Time.deltaTime, 0, 0);
+                }
+                if (m_HPCurrent == m_HPCurrent % 5 && m_HPCurrent != 0 && m_HPCurrent != m_HPMax)
+                {
+                    Charge = true;
+                    if (Charge == true)
+                    {
 
+                        if (origZ - transform.position.z > distancez) //Si la position est supérieur
+                        {
+                            useSpeed = directionSpeed; //flip direction
+                        }
+                        else if (origZ - transform.position.z < -distancez) // Si la position est inferieur 
+                        {
+                            useSpeed = -directionSpeed; //flip direction
+                        }
+                        transform.Translate(0, 0, -useSpeed * Time.deltaTime);
+                    }
+
+                }
             }
             else if (GameManager.current.GetNiveau() == 3)
             {
+                if (Charge == false)
+                {
+                    if (origY - transform.position.y > distancey) //Si la position est supérieur
+                    {
+                        useSpeed = directionSpeed; //flip direction
+                    }
+                    else if (origY - transform.position.y < -distancey) // Si la position est inferieur 
+                    {
+                        useSpeed = -directionSpeed; //flip direction
+                    }
+                    transform.Translate(0, useSpeed * Time.deltaTime, 0);
+                }
+                if (m_HPCurrent == m_HPCurrent % 5 && m_HPCurrent != 0 && m_HPCurrent != m_HPMax)
+                {
+                    Charge = true;
+                    if (Charge == true)
+                    {
+
+                        if (origZ - transform.position.z > distancez) //Si la position est supérieur
+                        {
+                            useSpeed = directionSpeed; //flip direction
+                        }
+                        else if (origY - transform.position.z < -distancez) // Si la position est inferieur 
+                        {
+                            useSpeed = -directionSpeed; //flip direction
+                        }
+                        transform.Translate(0, 0, -useSpeed * Time.deltaTime);
+                    }
+
+                }
 
             }
 

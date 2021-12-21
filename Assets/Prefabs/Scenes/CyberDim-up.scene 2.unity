@@ -786,18 +786,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4331326236527754792, guid: 5e2b5202f37e8254a9f155ff693c69c7, type: 3}
-      propertyPath: m_PauseText
-      value: 
-      objectReference: {fileID: 3640819508272114791, guid: 6f239333a3aad894c923a3bb0acf3339, type: 3}
-    - target: {fileID: 4331326236527754792, guid: 5e2b5202f37e8254a9f155ff693c69c7, type: 3}
-      propertyPath: m_exit_button
-      value: 
-      objectReference: {fileID: 7068886216491392191, guid: ff3fdc5ff35e14948a1e519e949cc563, type: 3}
-    - target: {fileID: 4331326236527754792, guid: 5e2b5202f37e8254a9f155ff693c69c7, type: 3}
-      propertyPath: m_instructions
-      value: 
-      objectReference: {fileID: 8436930531880772905, guid: ecaaf6225fcdd174d9ff240d43c60a74, type: 3}
     - target: {fileID: 4331326236527754794, guid: 5e2b5202f37e8254a9f155ff693c69c7, type: 3}
       propertyPath: m_Name
       value: Panel
@@ -931,6 +919,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 123080761}
+    - target: {fileID: 7139558610389673717, guid: 746b08ae77f1a5449ab295bd97e58833, type: 3}
+      propertyPath: distancex
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7250364150317498652, guid: 746b08ae77f1a5449ab295bd97e58833, type: 3}
       propertyPath: m_RootOrder
       value: 11
