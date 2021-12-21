@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     private bool m_GameOver = false;
     private bool m_Victory = false;
     private bool m_BossFighting = false;
+    private bool m_GameIsPaused = false;
+
     [SerializeField]
     private GameObject m_Boss;
 
@@ -47,6 +49,17 @@ public class GameManager : MonoBehaviour
     {
         if (m_Score >= 100 * m_Level && m_Level != 0)
             m_BossFighting = true;
+
+        if (Input.GetKeyDown(KeyCode.Escape) && m_Level != 0)
+        {
+            m_GameIsPaused = !m_GameIsPaused;
+            Time.timeScale = m_GameIsPaused ? 0f : 1f;
+        }
+    }
+
+    public bool IsPaused()
+    {
+        return m_GameIsPaused;
     }
 
     public void AddScore(int score)

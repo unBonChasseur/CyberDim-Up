@@ -49,12 +49,11 @@ public class Enemy : Entity
 
         transform.position += new Vector3(0,0, m_Speed * Time.deltaTime);
 
-        if (m_StopWatchBullet.ElapsedMilliseconds >= m_FireRateDelay)
+        if (m_StopWatchBullet.ElapsedMilliseconds >= m_FireRateDelay && !GameManager.current.IsPaused())
         {
             GameObject FireRight = Instantiate(m_PrefabFire, transform.position, new Quaternion(0, 90, 90, 1));
             m_StopWatchBullet.Restart();
             m_audio.PlayOneShot(shot, 0.5f);
-
         }
 
         if (m_CurrentPosition.y > m_DeathDist)

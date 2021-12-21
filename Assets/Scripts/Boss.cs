@@ -9,11 +9,6 @@ public class Boss : Entity
     [SerializeField]
     private float m_HPCurrent;
 
-    //private float ObjectifPositionZ = -1050;
-
-    
-
-
     [SerializeField]
     private Camera m_Camera;
     [SerializeField]
@@ -62,11 +57,6 @@ public class Boss : Entity
     // Update is called once per frame
     void Update()
     {
-        
-
-        // Il faudrait faire des déplacements aléatoire pour le boss un peu comme dans le script du player. 
-        // pour les tirs du Boss, tu peux recalibrer a la main l'endroit dôù le boss tire ou bien juste lui faire spawner des rangées d'ennemis devant lui pour qu'il soit dangeureux.
-        // Je ne pense pas pouvoir me rendre dispo sur le reste de mon voyage a strasbourg, mais si t'as des questions hésite pas ! 
         if (GameManager.current.GetNiveau() != 0)
         {
             if (GameManager.current.GetNiveau() == 1)
@@ -120,7 +110,7 @@ public class Boss : Entity
 
         //transform.position += new Vector3(0,0, m_Speed * Time.deltaTime);
 
-        if (m_StopWatchBullet.ElapsedMilliseconds >= m_FireRateDelay)
+        if (m_StopWatchBullet.ElapsedMilliseconds >= m_FireRateDelay && !GameManager.current.IsPaused())
         {
             GameObject FireRight = Instantiate(m_PrefabFire, transform.position, new Quaternion(0, 90, 90, 1));
             m_StopWatchBullet.Restart();
