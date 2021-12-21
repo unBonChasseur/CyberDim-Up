@@ -908,10 +908,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7139558610389673717, guid: 746b08ae77f1a5449ab295bd97e58833, type: 3}
-      propertyPath: tir
-      value: 
-      objectReference: {fileID: 8300000, guid: ab02de6bc329b374dae74cbd709fc318, type: 3}
-    - target: {fileID: 7139558610389673717, guid: 746b08ae77f1a5449ab295bd97e58833, type: 3}
       propertyPath: m_audio
       value: 
       objectReference: {fileID: 2041667156}
@@ -919,10 +915,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 123080761}
-    - target: {fileID: 7139558610389673717, guid: 746b08ae77f1a5449ab295bd97e58833, type: 3}
-      propertyPath: distancex
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 7250364150317498652, guid: 746b08ae77f1a5449ab295bd97e58833, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -973,7 +965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8058531187550231462, guid: 746b08ae77f1a5449ab295bd97e58833, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 746b08ae77f1a5449ab295bd97e58833, type: 3}

@@ -47,8 +47,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_Score >= 100 * m_Level && m_Level != 0)
-            m_BossFighting = true;
+        if (m_Score >= 500 * m_Level && m_Level != 0)
+            SetBossFighting(true);
 
         if (Input.GetKeyDown(KeyCode.Escape) && m_Level != 0 && !current.GetVictory() && !current.GetGameOver())
         {

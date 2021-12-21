@@ -21,7 +21,7 @@ public class Boss : Entity
     private float origX;
     public float distancey = 14.2f;
     public float distancez = 55f;
-    public float distancex = 10f;
+    public float distancex = 50f;
     private bool Charge = false;
 
 
@@ -35,13 +35,11 @@ public class Boss : Entity
 
     public AudioClip tir;
     public AudioSource m_audio;
-
- 
-    
+    private bool dirvalide=true;
 
     void Awake()
     {
-        DeplacementInitial();
+        //DeplacementInitial();
 
         m_StopWatchBullet = new Stopwatch();
         m_StopWatchBullet.Start();
@@ -52,10 +50,13 @@ public class Boss : Entity
     {
         m_HPCurrent = m_HPMax;
         origY = transform.position.y;  // Y = de haut en bas  
-        useSpeed = -directionSpeed;
         origZ = transform.position.z;
         origX = transform.position.x;
-       
+        useSpeed = -directionSpeed;
+        
+        
+
+
     }
 
     // Update is called once per frame
@@ -82,16 +83,16 @@ public class Boss : Entity
                     Charge = true;
                     if (Charge==true)
                     {
-                       
-                        if (origZ - transform.position.z > distancez/2) //Si la position est supérieur
-                        {
-                            useSpeed = -directionSpeed; //flip direction
-                        }
-                        else if (origZ - transform.position.z < -distancez) // Si la position est inferieur 
+
+                        if (origZ - transform.position.z > distancez) //Si la position est supérieur
                         {
                             useSpeed = directionSpeed; //flip direction
                         }
-                        transform.Translate(0, 0, -useSpeed * Time.deltaTime);
+                        else if (origZ - transform.position.z < -distancez) // Si la position est inferieur 
+                        {
+                            useSpeed = -directionSpeed; //flip direction
+                        }
+                        transform.Translate(0, 0, useSpeed * Time.deltaTime);
                     }
                    
                 }
@@ -101,13 +102,19 @@ public class Boss : Entity
             {
                 if (Charge == false)
                 {
-                    if (origX - transform.position.x > distancex) //Si la position est supérieur
+                    if (origX-transform.position.x > distancex )
                     {
-                        useSpeed = directionSpeed; //flip direction
+
+
+                        useSpeed = -directionSpeed;
+                        
                     }
-                    else if (origX - transform.position.x < distancex) // Si la position est inferieur 
+                    else if (origX - transform.position.x < -distancex)
                     {
-                        useSpeed = -directionSpeed; //flip direction
+
+
+                        useSpeed = directionSpeed;
+                        
                     }
                     transform.Translate(useSpeed * Time.deltaTime, 0, 0);
                 }
@@ -125,7 +132,7 @@ public class Boss : Entity
                         {
                             useSpeed = -directionSpeed; //flip direction
                         }
-                        transform.Translate(0, 0, -useSpeed * Time.deltaTime);
+                        transform.Translate(0, 0, useSpeed * Time.deltaTime);
                     }
 
                 }
@@ -150,7 +157,7 @@ public class Boss : Entity
                     if (Charge == true)
                     {
 
-                        if (origZ - transform.position.z > distancez) //Si la position est supérieur
+                        if (origZ - transform.position.z > distancez/2) //Si la position est supérieur
                         {
                             useSpeed = directionSpeed; //flip direction
                         }
@@ -169,10 +176,6 @@ public class Boss : Entity
 
         }
 
-        //m_CurrentPosition = m_MainCamera.WorldToScreenPoint(transform.position);
-
-        //transform.position += new Vector3(0,0, m_Speed * Time.deltaTime);
-
         if (m_StopWatchBullet.ElapsedMilliseconds >= m_FireRateDelay && !GameManager.current.IsPaused())
         {
             GameObject FireRight = Instantiate(m_PrefabFire, transform.position, new Quaternion(0, 90, 90, 1));
@@ -180,8 +183,7 @@ public class Boss : Entity
             m_audio.PlayOneShot(tir, 0.5f);
         }
         
-        //if (m_CurrentPosition.y > m_DeathDist)
-        //    Destroy(gameObject);
+        
     }
 
     void OnCollisionEnter(Collision collision)
@@ -205,10 +207,10 @@ public class Boss : Entity
         }
     }
 
-    private void DeplacementInitial()
+    /*private void DeplacementInitial()
     {
-
-    }
+        transform.Rotate(new Vector3(0,0,360));
+    }*/
 
 }
 

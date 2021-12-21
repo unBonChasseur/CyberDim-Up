@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7250364150317498652
 Transform:
   m_ObjectHideFlags: 0
@@ -46,13 +46,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4030b7aa2d3114783a90c2da0b77ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 2
+  m_HPCurrent: 0
   m_Camera: {fileID: 0}
   m_CameraMargin: 50
+  directionSpeed: 9
+  distancey: 14.2
+  distancez: 55
+  distancex: 50
   m_FireRateDelay: 5000
   m_PrefabFire: {fileID: 8113363781060653116, guid: 4a0d12f8da589b048b2fa6b20e67499d, type: 3}
-  tir: {fileID: 8300000, guid: 85f47b1703d876e49892ad3dc8433454, type: 3}
-  m_audio: {fileID: 2041667156, guid: 0e5a06d798356174986b124efd0f4c78, type: 3}
+  tir: {fileID: 8300000, guid: ab02de6bc329b374dae74cbd709fc318, type: 3}
+  m_audio: {fileID: 0}
 --- !u!54 &919132148655554250
 Rigidbody:
   m_ObjectHideFlags: 0
